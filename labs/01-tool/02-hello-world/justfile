@@ -1,0 +1,101 @@
+##################################################
+# Variables
+#
+
+rust_edition := "2024"
+app_name := "hello-world"
+crate_name := "hello_world"
+open := if os() == "linux" { "xdg-open" } else if os() == "macos" { "open" } else { "start \"\" /max" }
+project_directory := justfile_directory()
+
+# For windows shell to be supported (suppose code is multi-platforms ready)
+set shell := ["bash", "-uc"]
+set windows-shell := ["cmd.exe", "/c"]
+
+##################################################
+# Default
+#
+
+# List all available commands
+default:
+    @just --list
+
+##################################################
+# Info
+#
+
+# Print environment info (OS, arch, toolchains)
+info:
+    #!/usr/bin/env bash
+    set +e
+    echo "OS          : {{ os() }}"
+    echo "Arch        : {{ arch() }}"
+    echo "Project     : {{ project_directory }}"
+    echo "App         : {{ app_name }}"
+    echo ""
+    echo "--- Rust toolchain ---"
+    rustup show 2>/dev/null || echo "rustup not found"
+    echo ""
+    printf "  %-12s %s\n" "rustc" "$(rustc --version 2>/dev/null || echo 'NOT FOUND')"
+    printf "  %-12s %s\n" "cargo" "$(cargo --version 2>/dev/null    || echo 'NOT FOUND')"
+    printf "  %-12s %s\n" "rustfmt" "$(rustfmt --version 2>/dev/null || echo 'NOT FOUND')"
+    printf "  %-12s %s\n" "clippy"  "$(cargo clippy --version 2>/dev/null || echo 'NOT FOUND')"
+
+##################################################
+# Build & Run
+#
+
+# Build the project in debug mode
+build:
+    cargo build
+
+# Run the project
+run:
+    cargo run
+
+# Run cargo check (fast compile check, no codegen)
+check:
+    cargo check
+
+##################################################
+# Test & Lint
+#
+
+# Run all tests
+test:
+    cargo test
+
+# Run clippy with strict warnings
+clippy:
+    cargo clippy -- -D warnings
+
+# Format source with rustfmt
+rustfmt:
+    cargo fmt --all
+
+##################################################
+# Documentation
+#
+
+# Generate and open rustdoc documentation
+doc:
+    @echo "Generating rustdoc documentation..."
+    cargo doc --no-deps --document-private-items
+    @echo "✓ Documentation generated"
+    @echo "Opening documentation in browser..."
+    {{ open }} target/doc/{{ crate_name }}/index.html
+
+# Generate rustdoc documentation without opening
+doc-build:
+    @echo "Generating rustdoc documentation..."
+    cargo doc --no-deps --document-private-items
+    @echo "✓ Documentation generated at target/doc/{{ crate_name }}/index.html"
+
+##################################################
+# Clean
+#
+
+# Clean build artifacts
+clean:
+    cargo clean
+    @echo "Clean complete."
