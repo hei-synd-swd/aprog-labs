@@ -51,14 +51,12 @@ impl World {
     }
 
     fn tick_movement(&mut self) {
-        let mut new_positions: Vec<Option<Position>> = Vec::new();
         for i in 0..self.entities.len() {
-            let new_pos = self.entities[i].calculate_new_position(&self.entities);
-            new_positions.push(new_pos);
-        }
-
-        for i in 0..self.entities.len() {
-            if let Some(pos) = new_positions[i] {
+            let new_pos = {
+                let entity = &self.entities[i];
+                entity.calculate_new_position(&self.entities)
+            };
+            if let Some(pos) = new_pos {
                 self.entities[i].set_position(pos);
             }
         }

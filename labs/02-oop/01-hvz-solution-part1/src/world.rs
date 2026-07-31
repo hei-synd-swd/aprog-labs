@@ -35,24 +35,21 @@ impl World {
     }
 
     fn tick_movement(&mut self) {
-        let mut zombie_positions: Vec<Option<Position>> = Vec::new();
-        for zombie in &self.zombies {
-            let new_pos = zombie.calculate_new_position(&self.humans, &self.zombies);
-            zombie_positions.push(new_pos);
-        }
         for i in 0..self.zombies.len() {
-            if let Some(pos) = zombie_positions[i] {
+            let new_pos = {
+                let zombie = &self.zombies[i];
+                zombie.calculate_new_position(&self.humans, &self.zombies)
+            };
+            if let Some(pos) = new_pos {
                 self.zombies[i].set_position(pos);
             }
         }
-
-        let mut human_positions: Vec<Option<Position>> = Vec::new();
-        for human in &self.humans {
-            let new_pos = human.calculate_new_position(&self.humans, &self.zombies);
-            human_positions.push(new_pos);
-        }
         for i in 0..self.humans.len() {
-            if let Some(pos) = human_positions[i] {
+            let new_pos = {
+                let human = &self.humans[i];
+                human.calculate_new_position(&self.humans, &self.zombies)
+            };
+            if let Some(pos) = new_pos {
                 self.humans[i].set_position(pos);
             }
         }
