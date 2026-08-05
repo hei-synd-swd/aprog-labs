@@ -1,5 +1,5 @@
 use hello_world::print_greeting;
 
 fn main() {
-    print_greeting();
+  print_greeting();
 }
