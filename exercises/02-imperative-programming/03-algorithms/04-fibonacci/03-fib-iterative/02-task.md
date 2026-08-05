@@ -7,7 +7,7 @@ description = "Compute Fibonacci numbers using a bottom-up loop."
 topics      = ["iteration"]
 ---
 
-# Fibonacci — Iterative
+# Fibonacci - Iterative
 
 Write `fib_iter(n: u32) -> u64` that returns the nth Fibonacci number
 using **iteration** (bottom-up).

@@ -1,8 +1,8 @@
 // TODO: define a Circle struct with a field radius: f64
 // TODO: implement the following methods:
-//   - fn area(&self) -> f64            — returns π × r²
-//   - fn circumference(&self) -> f64   — returns 2 × π × r
-//   - fn grow(&mut self, factor: f64)  — multiplies radius by factor
+//   - fn area(&self) -> f64            - returns π × r²
+//   - fn circumference(&self) -> f64   - returns 2 × π × r
+//   - fn grow(&mut self, factor: f64)  - multiplies radius by factor
 
 fn main() {
     // TODO: create a Circle with radius 5.0

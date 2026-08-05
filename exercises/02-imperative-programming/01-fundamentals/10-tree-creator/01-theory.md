@@ -8,7 +8,7 @@ format!("{:<8}", 42);   // "42      "  left-aligned
 format!("{:^8}", 42);   // "   42   "  center-aligned
 ```
 
-The width can be **dynamic** — use `$` to reference a variable or argument:
+The width can be **dynamic** - use `$` to reference a variable or argument:
 
 ```rust
 let width = 8;

@@ -7,14 +7,14 @@ implement the trait can use the default or override it.
 trait Summary {
     fn summary(&self) -> String;
 
-    // Default method — types can use it as-is or override
+    // Default method - types can use it as-is or override
     fn detailed_summary(&self) -> String {
         format!("Detailed: {}", self.summary())
     }
 }
 ```
 
-Types that implement `Summary` only need to provide `summary` — the default
+Types that implement `Summary` only need to provide `summary` - the default
 `detailed_summary` is available automatically. They can also override it:
 
 ```rust

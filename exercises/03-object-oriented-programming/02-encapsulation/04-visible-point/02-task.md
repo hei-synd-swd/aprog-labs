@@ -29,4 +29,4 @@ constructor.
 - `Point::origin()` creates a point at (0, 0).
 - `distance` correctly computes the distance between two points.
 - `translate` shifts the point by the given offsets.
-- The fields `x` and `y` remain **private** — access is only through getters.
+- The fields `x` and `y` remain **private** - access is only through getters.

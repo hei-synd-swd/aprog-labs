@@ -6,7 +6,7 @@
 
 ```rust
 let big: u32 = 300;
-let small = big as u8; // 300 wraps to 44 — silent data loss!
+let small = big as u8; // 300 wraps to 44 - silent data loss!
 ```
 
 Widening (`u8` → `u32`) is always safe. Narrowing (`u32` → `u8`) truncates bits

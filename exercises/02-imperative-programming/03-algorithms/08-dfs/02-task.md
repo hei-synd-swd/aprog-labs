@@ -14,10 +14,10 @@ where each key is a node and the value is the list of its neighbors.
 
 Write two functions:
 
-1. `dfs(graph: &HashMap<u32, Vec<u32>>, node: u32, visited: &mut HashSet<u32>)` —
+1. `dfs(graph: &HashMap<u32, Vec<u32>>, node: u32, visited: &mut HashSet<u32>)` -
    inserts `node` into `visited`, then recursively visits all unvisited neighbors.
 
-2. `reachable_nodes(graph: &HashMap<u32, Vec<u32>>, start: u32) -> Vec<u32>` —
+2. `reachable_nodes(graph: &HashMap<u32, Vec<u32>>, start: u32) -> Vec<u32>` -
    creates a `HashSet`, calls `dfs`, then returns all visited nodes as a sorted `Vec`.
 
 ## Expected Result

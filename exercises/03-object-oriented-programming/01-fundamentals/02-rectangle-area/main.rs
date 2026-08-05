@@ -4,8 +4,8 @@ struct Rectangle {
 }
 
 // TODO: add an impl block with two methods:
-//   - fn area(&self) -> u32     — returns width × height
-//   - fn perimeter(&self) -> u32 — returns 2 × (width + height)
+//   - fn area(&self) -> u32     - returns width × height
+//   - fn perimeter(&self) -> u32 - returns 2 × (width + height)
 
 fn main() {
     let rect = Rectangle {

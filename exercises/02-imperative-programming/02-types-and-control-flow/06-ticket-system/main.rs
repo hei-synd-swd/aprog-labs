@@ -18,7 +18,7 @@ fn main() {
     upgrade(&mut t, "VIP Concert");
     println!("check: {}", check(&t));
     redeem(t);
-    // println!("{}", check(&t));  // try uncommenting — ownership was moved!
+    // println!("{}", check(&t));  // try uncommenting - ownership was moved!
 }
 
 //==============================================================================

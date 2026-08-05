@@ -20,6 +20,6 @@ impl Panel {
 }
 ```
 
-- **Extensibility** — new widget types don't require changing `Panel`
-- **Encapsulation** — `Panel` knows only the trait contract
-- **Composition over inheritance** — `Panel` *contains* widgets; it doesn't *inherit* from them
+- **Extensibility** - new widget types don't require changing `Panel`
+- **Encapsulation** - `Panel` knows only the trait contract
+- **Composition over inheritance** - `Panel` *contains* widgets; it doesn't *inherit* from them

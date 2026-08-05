@@ -12,9 +12,9 @@ enum Status {
 }
 ```
 
-- **`Debug`** → `{:?}` formatting — print the value for debugging
-- **`Clone`** → `.clone()` — make an explicit copy
-- **`Copy`** → Implicit copy on assignment (no move) — only for simple types
+- **`Debug`** → `{:?}` formatting - print the value for debugging
+- **`Clone`** → `.clone()` - make an explicit copy
+- **`Copy`** → Implicit copy on assignment (no move) - only for simple types
 - **`PartialEq`** → `==` and `!=` comparisons
 
 ## Type aliases

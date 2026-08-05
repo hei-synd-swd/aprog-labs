@@ -1,5 +1,5 @@
 ##################################################
-# Human vs. Zombie — OOP Lab
+# Human vs. Zombie - OOP Lab
 #
 
 set shell := ["bash", "-uc"]

@@ -4,7 +4,7 @@
 
 /// 2D position on the game grid.
 ///
-/// ⚠️ **Student task** — this module is not pre-written.
+/// ⚠️ **Student task** - this module is not pre-written.
 /// You must write the struct, derives, and all methods from scratch.
 pub mod position;
 

@@ -11,8 +11,8 @@ topics      = ["struct", "fields", "instance"]
 
 Define a struct `Rectangle` with two fields:
 
-- `width` — a `u32`
-- `height` — a `u32`
+- `width` - a `u32`
+- `height` - a `u32`
 
 Then, in `main`, create an instance of `Rectangle` with width `10` and height
 `20`.

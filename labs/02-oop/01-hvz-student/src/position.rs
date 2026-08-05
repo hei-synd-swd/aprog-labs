@@ -2,7 +2,7 @@
 //
 // Requirements:
 // - Derive `Clone`, `Copy`, `Debug`, `PartialEq`
-// - Fields: x (i32), y (i32) — both private
+// - Fields: x (i32), y (i32) - both private
 // - Methods: new, x, y, set_x, set_y, distance
 //
 // Tests are provided at the bottom of this file.

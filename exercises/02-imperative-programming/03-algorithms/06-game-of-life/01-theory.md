@@ -36,6 +36,6 @@ for (dr, dc) in offsets {
 }
 ```
 
-This pattern works for any grid-based algorithm — Conway's Game of Life,
-pathfinding, image filters, maze solving — without hard-coding each
+This pattern works for any grid-based algorithm - Conway's Game of Life,
+pathfinding, image filters, maze solving - without hard-coding each
 neighbor position.

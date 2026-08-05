@@ -2,10 +2,10 @@
 
 // TODO: define a type alias `Board` as `[[Cell; 3]; 3]`.
 
-// TODO: implement `winner` — return the winning player or None.
+// TODO: implement `winner` - return the winning player or None.
 // fn winner(board: &Board) -> Option<Cell> { ... }
 
-// TODO: implement `is_full` — true if no cell is Empty.
+// TODO: implement `is_full` - true if no cell is Empty.
 // fn is_full(board: &Board) -> bool { ... }
 
 fn main() {

@@ -24,9 +24,9 @@ let p = Point { x: 10, y: 20 };
 Use `format!` to produce a string. Format specifiers control the output:
 
 ```rust
-format!("{:02X}", 255)     // "FF" — uppercase hex, padded to 2 digits
-format!("{:08b}", 5)       // "00000101" — binary, padded
-format!("{:>10}", "hi")    // "        hi" — right-aligned
+format!("{:02X}", 255)     // "FF" - uppercase hex, padded to 2 digits
+format!("{:08b}", 5)       // "00000101" - binary, padded
+format!("{:>10}", "hi")    // "        hi" - right-aligned
 ```
 
 Combine multiple values into one string:

@@ -10,7 +10,7 @@ topics      = ["composition", "delegation", "has-a", "inheritance"]
 # Car Engine Composition
 
 An `Engine` struct is provided with a `start()` method. A `Car` struct holds
-an **`engine: Engine`** field — a **has-a** relationship.
+an **`engine: Engine`** field - a **has-a** relationship.
 
 The `Car` already delegates `start()` to its engine.
 

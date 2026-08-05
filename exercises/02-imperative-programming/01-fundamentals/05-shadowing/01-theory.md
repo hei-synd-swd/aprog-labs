@@ -5,7 +5,7 @@ binding can even have a different type:
 
 ```rust
 let spaces = "   ";        // &str
-let spaces = spaces.len(); // usize — a brand-new binding
+let spaces = spaces.len(); // usize - a brand-new binding
 ```
 
 This is different from `mut`:

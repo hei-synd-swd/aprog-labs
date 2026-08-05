@@ -11,9 +11,9 @@ topics      = ["conversion", "as", "try_from", "option"]
 
 Implement two conversions from `i32` to `u8`:
 
-1. `truncate_to_u8(n: i32) -> u8` — use an `as` cast. This is fast but **lossy**
+1. `truncate_to_u8(n: i32) -> u8` - use an `as` cast. This is fast but **lossy**
    when `n` does not fit in a `u8`.
-2. `safe_to_u8(n: i32) -> Option<u8>` — use a checked conversion that returns
+2. `safe_to_u8(n: i32) -> Option<u8>` - use a checked conversion that returns
    `Some(v)` when `n` fits in a `u8` and `None` otherwise.
 
 ## Expected Result

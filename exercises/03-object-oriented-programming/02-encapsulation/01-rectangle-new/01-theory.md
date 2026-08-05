@@ -30,7 +30,7 @@ fn main() {
 
 ## Key Points
 
-- `new` is just a convention — any name works (`from`, `with_defaults`, ...).
+- `new` is just a convention - any name works (`from`, `with_defaults`, ...).
 - The `::` syntax calls associated functions (like `Point::origin`).
 - Associated functions return `Self` (an alias for the type).
 - A constructor is a natural place to add validation or defaults later.

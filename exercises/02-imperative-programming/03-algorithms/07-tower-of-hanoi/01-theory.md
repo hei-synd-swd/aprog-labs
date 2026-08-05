@@ -16,7 +16,7 @@ fn count_branches(depth: u32) -> u32 {
 ```
 
 Every call to `count_branches(n)` produces two recursive calls, forming
-a binary tree. The number of calls grows exponentially — `2ⁿ⁺¹ − 1`
+a binary tree. The number of calls grows exponentially - `2ⁿ⁺¹ − 1`
 total calls for depth `n`.
 
 ## When to use tree recursion

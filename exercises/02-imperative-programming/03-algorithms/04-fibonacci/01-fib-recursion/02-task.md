@@ -7,7 +7,7 @@ description = "Compute Fibonacci numbers using plain recursion."
 topics      = ["recursion"]
 ---
 
-# Fibonacci — Recursion
+# Fibonacci - Recursion
 
 Write `fib_rec(n: u32) -> u64` that returns the nth Fibonacci number
 using **plain recursion**.

@@ -12,7 +12,7 @@
 
 fn main() {
     let mut s = String::from("hello world");
-    // Multiple immutable borrows at once — this works!
+    // Multiple immutable borrows at once - this works!
     println!("chars: {}, first word: {}", count_chars(&s), first_word(&s));
 
     add_exclamation(&mut s);
@@ -59,7 +59,7 @@ mod tests {
     #[test]
     fn test_multiple_immutable_borrows() {
         let s = String::from("hello world");
-        // Both borrow s immutably — this must compile
+        // Both borrow s immutably - this must compile
         let chars = count_chars(&s);
         let word = first_word(&s);
         assert_eq!(chars, 11);

@@ -5,7 +5,7 @@ to another or passed to a function, ownership is **moved**:
 
 ```rust
 let a = String::from("hello");
-let b = a;          // a is MOVED to b — a can no longer be used
+let b = a;          // a is MOVED to b - a can no longer be used
 ```
 
 The same happens when passing to a function:
@@ -15,7 +15,7 @@ fn take(s: String) { /* s owns the data now */ }
 
 let s = String::from("hi");
 take(s);            // ownership moved into take
-// println!("{s}"); // compile error — s was moved
+// println!("{s}"); // compile error - s was moved
 ```
 
 ## Borrowing
@@ -28,13 +28,13 @@ fn peek(s: &String) -> usize {
 }
 ```
 
-- `&T` — immutable reference (read-only, many can coexist)
-- `&mut T` — mutable reference (exclusive write access)
+- `&T` - immutable reference (read-only, many can coexist)
+- `&mut T` - mutable reference (exclusive write access)
 
 ## Clone
 
 If you need a copy, use `.clone()`:
 
 ```rust
-let b = a.clone();  // deep copy — both a and b stay valid
+let b = a.clone();  // deep copy - both a and b stay valid
 ```

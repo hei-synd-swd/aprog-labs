@@ -26,7 +26,7 @@ let items: Vec<MediaEnum> = vec![
     MediaEnum::Book(Book { title: "Dune".into(), pages: 412 }),
     MediaEnum::Movie(Movie { title: "Inception".into(), runtime_minutes: 148 }),
 ];
-// items.iter().map(|m| m.title())  // no match needed — enum impl handles it
+// items.iter().map(|m| m.title())  // no match needed - enum impl handles it
 ```
 
 | | Enum | `Box<dyn Trait>` |

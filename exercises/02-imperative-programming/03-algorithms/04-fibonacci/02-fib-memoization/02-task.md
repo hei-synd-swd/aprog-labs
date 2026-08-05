@@ -7,7 +7,7 @@ description = "Compute Fibonacci numbers using recursion with memoization."
 topics      = ["recursion", "memoization"]
 ---
 
-# Fibonacci — Memoization
+# Fibonacci - Memoization
 
 Write `fib_memo(n: u32) -> u64` that returns the nth Fibonacci number
 using **recursion with memoization**.

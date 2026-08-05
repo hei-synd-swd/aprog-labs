@@ -1,5 +1,5 @@
 // ============================================================
-// Human vs. Zombie — OOP Lab
+// Human vs. Zombie - OOP Lab
 // ============================================================
 //
 // STUDENT TASK: Replace every `todo!()` with your own

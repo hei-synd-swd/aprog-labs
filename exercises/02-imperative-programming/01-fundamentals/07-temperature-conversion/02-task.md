@@ -17,7 +17,7 @@ Implement `From<Celsius> for Fahrenheit` using the formula:
 °F = °C × 9 / 5 + 32
 ```
 
-Once `From` is implemented, `Into` works automatically — both
+Once `From` is implemented, `Into` works automatically - both
 `Fahrenheit::from(Celsius(c))` and `let f: Fahrenheit = Celsius(c).into();`
 must produce the right value.
 

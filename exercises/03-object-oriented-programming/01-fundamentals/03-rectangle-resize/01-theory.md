@@ -32,4 +32,4 @@ println!("{}", c.value);      // 1
 | `&self` | ✅ | ❌ |
 | `&mut self` | ✅ | ✅ |
 
-The Rust compiler enforces these rules at compile time — no data races.
+The Rust compiler enforces these rules at compile time - no data races.

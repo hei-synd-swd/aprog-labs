@@ -12,7 +12,7 @@ topics      = ["loops", "math"]
 Write `next_prime(n: u64) -> u64` that returns the smallest prime that
 is **greater than or equal to** `n`.
 
-Start from `n` and call `is_prime` in a loop — keep incrementing until
+Start from `n` and call `is_prime` in a loop - keep incrementing until
 you find one.
 
 Expected Result:

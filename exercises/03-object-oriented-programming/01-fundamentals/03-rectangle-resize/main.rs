@@ -14,8 +14,8 @@ impl Rectangle {
 }
 
 // TODO: add mutable methods:
-//   - fn scale(&mut self, factor: u32)   — multiply width and height by factor
-//   - fn shrink(&mut self, factor: u32)  — divide width and height by factor
+//   - fn scale(&mut self, factor: u32)   - multiply width and height by factor
+//   - fn shrink(&mut self, factor: u32)  - divide width and height by factor
 
 fn main() {
     let mut rect = Rectangle {

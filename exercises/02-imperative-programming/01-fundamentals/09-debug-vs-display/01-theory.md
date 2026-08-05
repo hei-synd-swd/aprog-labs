@@ -2,8 +2,8 @@
 
 Rust has two main formatting traits:
 
-- **`Display`** — for user-facing output, used with `{}`
-- **`Debug`** — for developer-facing output, used with `{:?}`
+- **`Display`** - for user-facing output, used with `{}`
+- **`Debug`** - for developer-facing output, used with `{:?}`
 
 Most built-in types implement both, but custom types only get `Debug`
 when you derive it:

@@ -26,7 +26,7 @@ match dir {
 }
 ```
 
-The compiler checks that every variant is covered — unmatched variants
+The compiler checks that every variant is covered - unmatched variants
 cause a compilation error. This is called **exhaustiveness**.
 
 ## matches!

@@ -1,9 +1,9 @@
 // TODO: define the `TrafficLight` enum with variants `Red`, `Yellow`, `Green`.
 
-// TODO: implement `next` — transition to the next state.
+// TODO: implement `next` - transition to the next state.
 // fn next(light: &TrafficLight) -> TrafficLight { ... }
 
-// TODO: implement `is_stop` — return true only for Red.
+// TODO: implement `is_stop` - return true only for Red.
 // fn is_stop(light: &TrafficLight) -> bool { ... }
 
 fn main() {

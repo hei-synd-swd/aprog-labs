@@ -14,5 +14,5 @@ This recurrence relation is defined as:
 - F(n) = F(n - 1) + F(n - 2)  for n > 1
 
 It appears in nature (spirals in shells, branching in trees) and is a
-classic example to compare different algorithmic strategies — naive
+classic example to compare different algorithmic strategies - naive
 recursion, memoization, and iteration.

@@ -9,13 +9,13 @@ struct Person {
 // TODO: implement Display for Person so {} prints as "Name (Age)"
 // impl fmt::Display for Person { ... }
 
-/// Format using Debug ({:?}) — shows the struct field dump
+/// Format using Debug ({:?}) - shows the struct field dump
 fn format_debug(p: &Person) -> String {
     // TODO: format using Debug
     todo!()
 }
 
-/// Format using Display ({}) — shows "Name (Age)"
+/// Format using Display ({}) - shows "Name (Age)"
 fn format_display(p: &Person) -> String {
     // TODO: format using Display
     todo!()

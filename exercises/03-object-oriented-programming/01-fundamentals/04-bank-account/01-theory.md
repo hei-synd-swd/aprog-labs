@@ -5,7 +5,7 @@ and add mutable methods (`&mut self`), you can build more interesting types.
 
 ## Struct with Multiple Methods
 
-A struct can have many methods in the same `impl` block — mix read-only
+A struct can have many methods in the same `impl` block - mix read-only
 methods and mutable methods:
 
 ```rust

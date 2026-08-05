@@ -15,7 +15,7 @@ An array of arrays creates a grid:
 
 ```rust
 let board: [[u8; 3]; 3] = [[0; 3]; 3];
-//       columns ^            rows ^   
+//       columns ^            rows ^
 ```
 
 `[[0; 3]; 3]` creates a 3×3 grid filled with zeros.
@@ -39,4 +39,4 @@ for row in 0..3 {
 }
 ```
 
-Arrays are fixed-size and stack-allocated — no heap allocation needed.
+Arrays are fixed-size and stack-allocated - no heap allocation needed.

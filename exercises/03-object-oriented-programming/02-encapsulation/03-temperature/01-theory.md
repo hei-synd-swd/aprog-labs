@@ -5,7 +5,7 @@ methods to let callers read and write field values in a controlled way.
 
 ## Getter Pattern
 
-In Rust, the idiomatic getter is named **after the field** — no `get_` prefix:
+In Rust, the idiomatic getter is named **after the field** - no `get_` prefix:
 
 ```rust
 struct Player {

@@ -10,7 +10,7 @@ let binary  = 0b1111_0000; // base 2,  prefix 0b  → 240
 let byte    = b'A';        // ASCII byte literal  → 65
 ```
 
-The underscore `_` is a **digit separator** — it is ignored by the compiler
+The underscore `_` is a **digit separator** - it is ignored by the compiler
 and only improves readability:
 
 ```rust

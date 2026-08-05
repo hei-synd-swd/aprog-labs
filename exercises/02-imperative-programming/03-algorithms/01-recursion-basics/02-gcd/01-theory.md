@@ -5,8 +5,8 @@ that divides both evenly. Euclid's algorithm is an elegant recursive
 solution:
 
 ```
-gcd(a, b) = gcd(b, a % b)  — keep replacing (a, b) with (b, a mod b)
-gcd(a, 0) = a              — until b reaches 0
+gcd(a, b) = gcd(b, a % b)  - keep replacing (a, b) with (b, a mod b)
+gcd(a, 0) = a              - until b reaches 0
 ```
 
 For example, `gcd(48, 18)`:
