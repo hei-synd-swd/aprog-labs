@@ -55,37 +55,42 @@ impl World {
 
   fn tick_infection(&mut self) -> Duration {
     let start = Instant::now();
-    let mut to_remove = Vec::new();
-    let mut new_zombies = Vec::new();
+    let to_convert: Vec<(usize, Position)> = self
+      .entities
+      .iter()
+      .enumerate()
+      .filter_map(|(i, entity)| {
+        if !entity.is_human() {
+          return None;
+        }
+        let pos = *entity.position();
+        let nearby = self
+          .entities
+          .iter()
+          .filter(|e| {
+            if e.is_human() {
+              return false;
+            }
+            let dx = (e.position().x() - pos.x()).abs();
+            let dy = (e.position().y() - pos.y()).abs();
+            dx <= 1 && dy <= 1
+          })
+          .count();
+        if nearby >= INFECTION_THRESHOLD {
+          Some((i, pos))
+        } else {
+          None
+        }
+      })
+      .collect();
 
-    for (i, entity) in self.entities.iter().enumerate() {
-      if !entity.is_human() {
-        continue;
-      }
-      let pos = entity.position();
-      let nearby_zombies = self
-        .entities
-        .iter()
-        .filter(|e| {
-          if e.is_human() {
-            return false;
-          }
-          let dx = (e.position().x() - pos.x()).abs();
-          let dy = (e.position().y() - pos.y()).abs();
-          dx <= 1 && dy <= 1
-        })
-        .count();
-      if nearby_zombies >= INFECTION_THRESHOLD {
-        to_remove.push(i);
-        new_zombies.push(crate::zombie::Zombie::new(*pos));
-      }
-    }
-
-    for &i in to_remove.iter().rev() {
+    for &(i, _) in to_convert.iter().rev() {
       self.entities.swap_remove(i);
     }
-    for zombie in new_zombies {
-      self.entities.push(Box::new(zombie));
+    for (_, pos) in to_convert {
+      self
+        .entities
+        .push(Box::new(crate::zombie::Zombie::new(pos)));
     }
     start.elapsed()
   }

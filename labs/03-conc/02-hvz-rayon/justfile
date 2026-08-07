@@ -12,6 +12,10 @@ default:
 @run:
   cargo run
 
+# Benchmark the game
+@bench:
+  cargo run -- release -- bench
+
 # Run all tests (single-threaded so output stays grouped by module)
 @test:
   cargo test -- --test-threads=1

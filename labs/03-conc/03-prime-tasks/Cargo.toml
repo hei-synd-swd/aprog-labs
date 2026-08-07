@@ -1,0 +1,14 @@
+[package]
+name = "prime-tasks"
+version = "0.1.0"
+edition = "2021"
+
+# No external dependencies: this lab uses only the standard library
+# (std::thread) to spawn and join worker threads.
+[dependencies]
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = 3
