@@ -2,6 +2,7 @@
 # Compiled output and build artifacts
 target/
 **/target/
+**/rust-project.json
 
 # Debug symbols
 *.pdb

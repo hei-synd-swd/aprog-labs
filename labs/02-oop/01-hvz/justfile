@@ -3,6 +3,7 @@
 #
 
 set shell := ["bash", "-uc"]
+part := "part1"
 
 # List all commands
 default:
@@ -12,13 +13,13 @@ default:
 @run:
   cargo run
 
-# Run all tests (single-threaded so output stays grouped by module)
-@test:
-  cargo test -- --test-threads=1
+# Run all tests with part selection [part1|part2] (single-threaded so output stays grouped by module)
+@test part=part:
+  cargo test --features="{{part}}" -- --test-threads=1
 
 # Run tests, showing only failures
-@test-quiet:
-  cargo test 2>&1 | grep -E "(test |FAILED|error|panic)"
+@test-quiet part=part:
+  cargo test --features="{{part}}" 2>&1 | grep -E "(test |FAILED|error|panic)"
 
 # Check that the project compiles
 @check:

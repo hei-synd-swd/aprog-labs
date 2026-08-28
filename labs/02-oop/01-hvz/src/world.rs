@@ -156,7 +156,7 @@ impl World {
   }
 }
 
-#[cfg(test)]
+#[cfg(all(test, feature = "part1"))]
 mod tests {
   use super::*;
 
@@ -291,5 +291,121 @@ mod tests {
     assert_eq!(w.turn, 1);
     w.process_turn();
     assert_eq!(w.turn, 2);
+  }
+}
+
+#[cfg(all(test, feature = "part2"))]
+mod tests {
+  use super::*;
+  use crate::human::Human;
+  use crate::robot::Robot;
+  use crate::zombie::Zombie;
+
+  #[test]
+  fn test_robot_is_neutral_not_counted_as_zombie() {
+    let mut w = World::new(10, 10);
+    w.add_robot(Robot::new(Position::new(4, 4)));
+    assert_eq!(w.count_robots(), 1);
+    assert_eq!(w.count_zombies(), 0, "a robot must not count as a zombie");
+    assert_eq!(w.count_humans(), 0);
+  }
+
+  #[test]
+  fn test_robot_next_to_human_does_not_infect() {
+    // A human adjacent only to a robot (no zombie) must NOT be infected.
+    let mut w = World::new(10, 10);
+    w.add_human(Human::new(Position::new(5, 5)));
+    w.add_robot(Robot::new(Position::new(5, 6)));
+    w.tick_infection();
+    assert_eq!(w.count_humans(), 1, "a robot must not cause infection");
+    assert_eq!(w.count_zombies(), 0);
+    assert_eq!(w.count_robots(), 1, "the robot itself is never infected");
+  }
+
+  #[test]
+  fn test_robot_survives_decay_ticks() {
+    // Robots never lose stamina, so they are never removed by tick_decay.
+    let mut w = World::new(10, 10);
+    w.add_robot(Robot::new(Position::new(0, 0)));
+    for _ in 0..100 {
+      w.tick_decay();
+    }
+    assert_eq!(w.count_robots(), 1, "a robot must never decay away");
+  }
+
+  #[test]
+  fn test_01_new() {
+    let w = World::new(5, 5);
+    assert_eq!(w.width, 5);
+    assert_eq!(w.height, 5);
+    assert!(w.entities.is_empty());
+    assert_eq!(w.turn, 0);
+  }
+
+  #[test]
+  fn test_02_add_human() {
+    let mut w = World::new(10, 10);
+    w.add_human(Human::new(Position::new(1, 2)));
+    assert_eq!(w.count_humans(), 1);
+  }
+
+  #[test]
+  fn test_03_add_zombie() {
+    let mut w = World::new(10, 10);
+    w.add_zombie(Zombie::new(Position::new(3, 4)));
+    assert_eq!(w.count_zombies(), 1);
+  }
+
+  #[test]
+  fn test_04_humans_and_zombies_filtered() {
+    let mut w = World::new(10, 10);
+    w.add_human(Human::new(Position::new(0, 0)));
+    w.add_zombie(Zombie::new(Position::new(1, 1)));
+    w.add_human(Human::new(Position::new(2, 2)));
+    assert_eq!(w.count_humans(), 2);
+    assert_eq!(w.count_zombies(), 1);
+  }
+
+  #[test]
+  fn test_05_single_zombie_does_not_infect() {
+    let mut w = World::new(10, 10);
+    w.add_human(Human::new(Position::new(5, 5)));
+    w.add_zombie(Zombie::new(Position::new(5, 2)));
+    w.tick_movement();
+    w.tick_infection();
+    assert_eq!(w.count_humans(), 1);
+  }
+
+  #[test]
+  fn test_06_two_zombies_infect_human() {
+    let mut w = World::new(10, 10);
+    w.add_zombie(Zombie::new(Position::new(0, 1)));
+    w.add_zombie(Zombie::new(Position::new(1, 0)));
+    w.add_human(Human::new(Position::new(0, 0)));
+    w.process_turn();
+    assert_eq!(w.count_humans(), 0);
+  }
+
+  #[test]
+  fn test_07_process_turn_increments_turn() {
+    let mut w = World::new(10, 10);
+    w.add_human(Human::new(Position::new(0, 0)));
+    w.add_zombie(Zombie::new(Position::new(9, 9)));
+    assert_eq!(w.turn, 0);
+    w.process_turn();
+    assert_eq!(w.turn, 1);
+  }
+
+  #[test]
+  fn test_08_zombie_dies_from_decay() {
+    let mut w = World::new(10, 10);
+    w.add_human(Human::new(Position::new(0, 0)));
+    let mut zombie = Zombie::new(Position::new(9, 9));
+    zombie.stamina = 15;
+    w.add_zombie(zombie);
+    w.process_turn();
+    assert_eq!(w.count_zombies(), 1);
+    w.process_turn();
+    assert_eq!(w.count_zombies(), 0);
   }
 }
