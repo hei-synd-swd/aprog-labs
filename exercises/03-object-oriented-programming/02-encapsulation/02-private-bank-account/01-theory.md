@@ -1,13 +1,10 @@
 # Encapsulation
 
-**Encapsulation** bundles data with the operations that act on it and *hides
-the internal representation* from outside code. This is the first pillar of OOP.
+**Encapsulation** bundles data with the operations that act on it and *hides the internal representation* from outside code. This is the first pillar of OOP.
 
 ## Private Fields, Public Methods
 
-In Rust, fields are **private by default** - they can only be accessed within
-the module where the struct is defined. You expose a controlled public API
-through methods:
+In Rust, fields are **private by default** - they can only be accessed within the module where the struct is defined. You expose a controlled public API through methods:
 
 ```rust
 mod library {
@@ -35,8 +32,7 @@ mod library {
 
 - **Data protection** - outside code cannot corrupt internal state directly.
 - **Invariants** - the type guarantees its own rules.
-- **Flexibility** - you can change the internal implementation without
-  breaking callers, as long as the public API stays the same.
+- **Flexibility** - you can change the internal implementation without breaking callers, as long as the public API stays the same.
 
 ## The `pub` Keyword
 

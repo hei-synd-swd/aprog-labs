@@ -1,7 +1,6 @@
 # Mutable Methods
 
-When a method needs to change the instance's fields, use **`&mut self`** as the
-first parameter. This borrows the instance mutably.
+When a method needs to change the instance's fields, use **`&mut self`** as the first parameter. This borrows the instance mutably.
 
 ```rust
 struct Counter {

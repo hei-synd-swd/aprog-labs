@@ -9,11 +9,9 @@ topics      = ["recursion", "memoization"]
 
 # Fibonacci - Memoization
 
-Write `fib_memo(n: u32) -> u64` that returns the nth Fibonacci number
-using **recursion with memoization**.
+Write `fib_memo(n: u32) -> u64` that returns the nth Fibonacci number using **recursion with memoization**.
 
-Use a `Vec<Option<u64>>` to cache computed values. The memoization
-technique is covered in the theory file.
+Use a `Vec<Option<u64>>` to cache computed values. The memoization technique is covered in the theory file.
 
 Expected Result:
 ```

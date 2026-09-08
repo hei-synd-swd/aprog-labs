@@ -9,8 +9,7 @@ topics      = ["slice", "iteration"]
 
 # Maximum
 
-Write `max(arr: &[i32]) -> Option<i32>` that returns the largest value
-in the slice, or `None` if the slice is empty.
+Write `max(arr: &[i32]) -> Option<i32>` that returns the largest value in the slice, or `None` if the slice is empty.
 
 Expected Result:
 ```

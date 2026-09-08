@@ -9,8 +9,7 @@ topics      = ["recursion", "math"]
 
 # Factorial
 
-Write a recursive function `factorial(n: u64) -> u64` that returns `n!`
-(the product `1 × 2 × ... × n`).
+Write a recursive function `factorial(n: u64) -> u64` that returns `n!` (the product `1 × 2 × ... × n`).
 
 - Base case: `0! = 1`
 - Recursive case: `n! = n × (n - 1)!`

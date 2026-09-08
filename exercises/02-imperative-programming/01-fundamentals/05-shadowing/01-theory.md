@@ -1,7 +1,6 @@
 # Shadowing
 
-**Shadowing** reuses a name by introducing a *new binding* with `let`. The new
-binding can even have a different type:
+**Shadowing** reuses a name by introducing a *new binding* with `let`. The new binding can even have a different type:
 
 ```rust
 let spaces = "   ";        // &str
@@ -15,8 +14,7 @@ This is different from `mut`:
 | same binding, reassigned | new binding each time |
 | type cannot change | type **can** change |
 
-Shadowing is handy when transforming a value through several steps while
-keeping one meaningful name:
+Shadowing is handy when transforming a value through several steps while keeping one meaningful name:
 
 ```rust
 let input = "  42  ";       // &str

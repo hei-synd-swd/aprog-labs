@@ -6,8 +6,7 @@ An **array** is a fixed-length list of values of the same type:
 let a: [u8; 3] = [10, 20, 30];
 ```
 
-The type `[T; N]` means "N elements of type T". The length is part of the
-type and cannot change.
+The type `[T; N]` means "N elements of type T". The length is part of the type and cannot change.
 
 ## 2D arrays
 

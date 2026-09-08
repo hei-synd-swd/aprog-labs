@@ -16,8 +16,7 @@ Model a traffic light with three states and transitions between them.
    - `Red` → `Green`
    - `Green` → `Yellow`
    - `Yellow` → `Red`
-3. Write a function `is_stop(light: &TrafficLight) -> bool` that returns
-   `true` only when the light is `Red`.
+3. Write a function `is_stop(light: &TrafficLight) -> bool` that returns `true` only when the light is `Red`.
 
 ## Expected Result
 

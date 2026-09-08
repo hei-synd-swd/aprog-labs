@@ -9,8 +9,7 @@ topics      = ["iteration"]
 
 # Fibonacci - Iterative
 
-Write `fib_iter(n: u32) -> u64` that returns the nth Fibonacci number
-using **iteration** (bottom-up).
+Write `fib_iter(n: u32) -> u64` that returns the nth Fibonacci number using **iteration** (bottom-up).
 
 Start with `a = 0` and `b = 1`, then loop `n` times updating both:
 - `(a, b) = (b, a + b)`

@@ -9,8 +9,7 @@ topics      = ["constructor", "associated function", "impl", "new"]
 
 # Rectangle Constructor
 
-The `Rectangle` struct is provided. Add an `impl` block with a **constructor**
-function `new` that takes `width` and `height` and returns a new `Rectangle`.
+The `Rectangle` struct is provided. Add an `impl` block with a **constructor** function `new` that takes `width` and `height` and returns a new `Rectangle`.
 
 ```rust
 fn new(width: u32, height: u32) -> Rectangle

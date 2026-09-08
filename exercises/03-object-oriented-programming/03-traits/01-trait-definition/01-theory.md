@@ -1,8 +1,6 @@
 # Traits
 
-A **trait** defines a set of method signatures that types can implement. It's
-Rust's way of defining shared behaviour - similar to an *interface* in Java or
-Go.
+A **trait** defines a set of method signatures that types can implement. It's Rust's way of defining shared behaviour - similar to an *interface* in Java or Go.
 
 ## Defining a Trait
 

@@ -9,8 +9,7 @@ topics      = ["struct", "methods", "&self", "&mut self"]
 
 # Circle Struct
 
-Define a `Circle` struct with a field `radius: f64`. Then implement the
-following methods:
+Define a `Circle` struct with a field `radius: f64`. Then implement the following methods:
 
 1. **`area(&self) -> f64`** - returns `π × r²` (use `std::f64::consts::PI`).
 2. **`circumference(&self) -> f64`** - returns `2 × π × r`.

@@ -15,9 +15,7 @@ The `Shape` trait, `Rectangle`, and `Circle` are provided.
    - `Rectangle(Rectangle)`
    - `Circle(Circle)`
 2. **Implement `Shape`** for `ShapeEnum` using `match`.
-3. **Write** a function `fn total_area_list(shapes: &[ShapeEnum]) -> f64` that
-   sums the areas (similar to the previous exercise, but with a `Vec<ShapeEnum>`
-   instead of `Vec<Box<dyn Shape>>`).
+3. **Write** a function `fn total_area_list(shapes: &[ShapeEnum]) -> f64` that sums the areas (similar to the previous exercise, but with a `Vec<ShapeEnum>` instead of `Vec<Box<dyn Shape>>`).
 
 ## Expected Result
 

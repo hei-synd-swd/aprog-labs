@@ -12,12 +12,8 @@ topics      = ["constants", "const", "types"]
 Define two constants used by a small scheduling tool.
 
 1. `MAX_LOGIN_ATTEMPTS` - a `u8` constant equal to `5`.
-2. `SECONDS_PER_DAY` - a `u32` constant **computed** from the three
-   building-block constants already provided (`SECONDS_PER_MINUTE`,
-   `MINUTES_PER_HOUR`, `HOURS_PER_DAY`).
+2. `SECONDS_PER_DAY` - a `u32` constant **computed** from the three building-block constants already provided (`SECONDS_PER_MINUTE`, `MINUTES_PER_HOUR`, `HOURS_PER_DAY`).
 
 ## Expected Result
 
-`MAX_LOGIN_ATTEMPTS` holds `5`, and `SECONDS_PER_DAY` evaluates to the number
-of seconds in one day (`86_400`), derived only from the other constants - no
-magic number.
+`MAX_LOGIN_ATTEMPTS` holds `5`, and `SECONDS_PER_DAY` evaluates to the number of seconds in one day (`86_400`), derived only from the other constants - no magic number.

@@ -37,8 +37,7 @@ format!("({}, {})", p.x, p.y)  // "(10, 20)"
 
 ## Top-level constants
 
-Constants defined at the top level (outside any function) are available
-everywhere in the file:
+Constants defined at the top level (outside any function) are available everywhere in the file:
 
 ```rust
 const ORIGIN: Point = Point { x: 0, y: 0 };

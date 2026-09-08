@@ -1,14 +1,10 @@
 # The Constructor Pattern
 
-Rust does not have a built-in `new` keyword. Instead, the convention is to
-write an **associated function** called `new` that builds and returns a new
-instance.
+Rust does not have a built-in `new` keyword. Instead, the convention is to write an **associated function** called `new` that builds and returns a new instance.
 
 ## Associated Functions
 
-An **associated function** is a function inside an `impl` block that does *not*
-take `self` as a parameter. It is called on the **type itself**, not on an
-instance.
+An **associated function** is a function inside an `impl` block that does *not* take `self` as a parameter. It is called on the **type itself**, not on an instance.
 
 ```rust
 struct Point {

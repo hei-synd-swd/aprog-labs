@@ -9,10 +9,7 @@ topics      = ["shadowing", "let", "parse", "types"]
 
 # Shadowing
 
-Implement `parse_padded`, which turns a possibly padded numeric string into an
-`i32`. Use **shadowing** to reuse the single name `input` as you transform it:
-first trim the surrounding whitespace (still a `&str`), then parse it into an
-`i32` (a new type, same name).
+Implement `parse_padded`, which turns a possibly padded numeric string into an `i32`. Use **shadowing** to reuse the single name `input` as you transform it: first trim the surrounding whitespace (still a `&str`), then parse it into an `i32` (a new type, same name).
 
 You may assume the trimmed input is always a valid integer.
 

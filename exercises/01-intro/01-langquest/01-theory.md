@@ -1,9 +1,6 @@
 # Getting Started with lq
 
-**LangQuest** is the interactive runner you use for every exercise in this
-course. It shows the exercise text, watches the exercise file, and - every time
-you **save** - recompiles it and re-runs the unit tests automatically. You never
-run the tests by hand: just edit `main.rs`, save, and watch the **Output** page.
+**LangQuest** is the interactive runner you use for every exercise in this course. It shows the exercise text, watches the exercise file, and - every time you **save** - recompiles it and re-runs the unit tests automatically. You never run the tests by hand: just edit `main.rs`, save, and watch the **Output** page.
 
 ## The Two Views
 
@@ -51,19 +48,10 @@ An exercise is made of several **pages** you move between with the arrow keys:
 
 ## Hints and the Solution
 
-Stuck? Press `h` to reveal hints **one at a time**, from a gentle nudge toward a
-more concrete pointer. After the **last** hint, pressing `h` once more unlocks
-and shows the full **Solution** page.
+Stuck? Press `h` to reveal hints **one at a time**, from a gentle nudge toward a more concrete pointer. After the **last** hint, pressing `h` once more unlocks and shows the full **Solution** page.
 
-**Hint reveals and solution reveals are recorded in your progress file.** While
-an exercise is still unsolved, LangQuest stores how many hints you revealed and
-whether you looked at the solution. This progress is integrity-protected, so it
-cannot be quietly edited away - your instructor can see it.
+**Hint reveals and solution reveals are recorded in your progress file.** While an exercise is still unsolved, LangQuest stores how many hints you revealed and whether you looked at the solution. This progress is integrity-protected, so it cannot be quietly edited away - your instructor can see it.
 
-This is not meant to punish you: hints and solutions are there to help you learn.
-But try the exercise yourself first - reach for a hint only when you are truly
-stuck, and open the solution only after you have given it a genuine attempt.
-Once you have **passed** an exercise, revealing hints or the solution to review
-it is free and no longer counted.
+This is not meant to punish you: hints and solutions are there to help you learn. But try the exercise yourself first - reach for a hint only when you are truly stuck, and open the solution only after you have given it a genuine attempt. Once you have **passed** an exercise, revealing hints or the solution to review it is free and no longer counted.
 
 Ready? Move to the **Task** page (`→`) and fix your first program.

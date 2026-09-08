@@ -1,13 +1,10 @@
 # Composition over Inheritance
 
-Rust **does not have class inheritance** (`struct Dog : Animal` is not valid).
-Instead, Rust encourages **composition** - building types by combining smaller
-parts.
+Rust **does not have class inheritance** (`struct Dog : Animal` is not valid). Instead, Rust encourages **composition** - building types by combining smaller parts.
 
 ## Has-a Relationships
 
-Instead of "a Computer **is a** Machine" (inheritance), say "a Computer
-**has a** Processor" (composition):
+Instead of "a Computer **is a** Machine" (inheritance), say "a Computer **has a** Processor" (composition):
 
 ```rust
 struct Processor { cores: u32, speed_ghz: f64 }

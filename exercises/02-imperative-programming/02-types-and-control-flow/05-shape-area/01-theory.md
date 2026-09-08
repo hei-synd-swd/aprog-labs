@@ -1,7 +1,6 @@
 # Enums with Data and f64
 
-Enum variants can hold data - each variant can have different fields
-with different types:
+Enum variants can hold data - each variant can have different fields with different types:
 
 ```rust
 enum Shape {

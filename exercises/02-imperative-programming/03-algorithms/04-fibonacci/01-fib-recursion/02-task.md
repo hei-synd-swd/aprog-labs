@@ -9,8 +9,7 @@ topics      = ["recursion"]
 
 # Fibonacci - Recursion
 
-Write `fib_rec(n: u32) -> u64` that returns the nth Fibonacci number
-using **plain recursion**.
+Write `fib_rec(n: u32) -> u64` that returns the nth Fibonacci number using **plain recursion**.
 
 - F(0) = 0, F(1) = 1
 - F(n) = F(n - 1) + F(n - 2) for n > 1

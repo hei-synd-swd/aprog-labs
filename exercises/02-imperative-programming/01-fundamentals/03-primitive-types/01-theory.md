@@ -28,5 +28,4 @@ let any = a || b; // OR
 let no = !a;      // NOT
 ```
 
-Use the associated constants and built-in methods rather than hard-coding
-values like `255` - they are clearer and adapt to the type.
+Use the associated constants and built-in methods rather than hard-coding values like `255` - they are clearer and adapt to the type.

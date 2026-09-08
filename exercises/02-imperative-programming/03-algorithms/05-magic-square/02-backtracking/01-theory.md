@@ -15,5 +15,4 @@ fn explore(candidates: ...) {
 }
 ```
 
-For the magic square, candidates are empty cells and options are numbers
-1..=9 not yet placed.
+For the magic square, candidates are empty cells and options are numbers 1..=9 not yet placed.

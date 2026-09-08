@@ -9,13 +9,11 @@ let big: u32 = 300;
 let small = big as u8; // 300 wraps to 44 - silent data loss!
 ```
 
-Widening (`u8` → `u32`) is always safe. Narrowing (`u32` → `u8`) truncates bits
-without warning.
+Widening (`u8` → `u32`) is always safe. Narrowing (`u32` → `u8`) truncates bits without warning.
 
 ## Safe conversion with `TryFrom` / `try_into`
 
-When a value might not fit, use the fallible conversions. They return a
-`Result`, so you can detect failure instead of silently corrupting data:
+When a value might not fit, use the fallible conversions. They return a `Result`, so you can detect failure instead of silently corrupting data:
 
 ```rust
 use std::convert::TryFrom;

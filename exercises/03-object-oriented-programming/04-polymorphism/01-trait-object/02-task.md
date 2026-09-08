@@ -11,11 +11,9 @@ topics      = ["trait object", "dyn", "Box", "dynamic dispatch"]
 
 The `Shape` trait, `Rectangle`, and `Circle` are provided.
 
-1. **Create** a `Box<dyn Shape>` from a `Rectangle` and another from a
-   `Circle`.
+1. **Create** a `Box<dyn Shape>` from a `Rectangle` and another from a `Circle`.
 2. **Call** `.area()` on each trait object and print the result.
-3. **Write** a function `fn print_area_dyn(shape: &dyn Shape)` that takes a
-   trait object reference and prints the area.
+3. **Write** a function `fn print_area_dyn(shape: &dyn Shape)` that takes a trait object reference and prints the area.
 
 ## Expected Result
 

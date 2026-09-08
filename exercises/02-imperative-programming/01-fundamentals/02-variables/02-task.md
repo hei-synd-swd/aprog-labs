@@ -9,9 +9,7 @@ topics      = ["variables", "let", "mut", "loops"]
 
 # Variables and Mutability
 
-Implement `sum_readings`, which adds up all sensor readings in a slice and
-returns the total. Use a **mutable accumulator** (`let mut`) updated inside a
-loop.
+Implement `sum_readings`, which adds up all sensor readings in a slice and returns the total. Use a **mutable accumulator** (`let mut`) updated inside a loop.
 
 ## Expected Result
 

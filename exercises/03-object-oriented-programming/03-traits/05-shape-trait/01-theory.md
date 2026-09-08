@@ -1,7 +1,6 @@
 # Traits for Computation
 
-Traits shine when used for **computation** - a function that works with any
-type implementing a trait can compute different results for each type.
+Traits shine when used for **computation** - a function that works with any type implementing a trait can compute different results for each type.
 
 ```rust
 struct Square { side: f64 }
@@ -28,6 +27,4 @@ fn print_area(shape: &impl Area) {
 }
 ```
 
-`print_area` works for both `Square` and `Circle` - each computes its own
-area through the same function. Adding a new type later (e.g. `Triangle`)
-doesn't require changing the function, only implementing `Area` for it.
+`print_area` works for both `Square` and `Circle` - each computes its own area through the same function. Adding a new type later (e.g. `Triangle`) doesn't require changing the function, only implementing `Area` for it.

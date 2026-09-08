@@ -9,12 +9,9 @@ topics      = ["array", "iteration", "validation"]
 
 # Magic Square Verify
 
-A **magic square** of size `n` is an `n × n` grid where every row, column,
-and diagonal sums to the same value (the **magic constant**). For a 3×3
-square using numbers 1..=9, the magic constant is 15.
+A **magic square** of size `n` is an `n × n` grid where every row, column, and diagonal sums to the same value (the **magic constant**). For a 3×3 square using numbers 1..=9, the magic constant is 15.
 
-Write `is_magic(grid: &[Vec<u32>]) -> bool` that returns `true` if `grid`
-is a valid 3×3 magic square:
+Write `is_magic(grid: &[Vec<u32>]) -> bool` that returns `true` if `grid` is a valid 3×3 magic square:
 
 - The grid is exactly 3 rows and 3 columns.
 - Uses each number from 1 to 9 exactly once.

@@ -1,7 +1,6 @@
 # Structs - Custom Data Types
 
-A **struct** (short for *structure*) is Rust's primary way to define a custom
-data type by grouping related values together.
+A **struct** (short for *structure*) is Rust's primary way to define a custom data type by grouping related values together.
 
 ## Defining a Struct
 
@@ -16,8 +15,7 @@ struct Point {
 
 ## Creating an Instance
 
-Use **struct literal syntax** - specify the struct name and provide values for
-every field:
+Use **struct literal syntax** - specify the struct name and provide values for every field:
 
 ```rust
 let p = Point {

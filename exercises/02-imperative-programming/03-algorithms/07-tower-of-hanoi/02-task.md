@@ -11,12 +11,9 @@ topics      = ["recursion", "hanoi"]
 
 Solve the classic Tower of Hanoi puzzle recursively.
 
-1. `hanoi(n: u32, from: &str, to: &str, aux: &str)` - prints each move
-   in the format `"Move disk from A to C"`. Use string literals like
-   `"A"`, `"B"`, `"C"` for the pegs.
+1. `hanoi(n: u32, from: &str, to: &str, aux: &str)` - prints each move in the format `"Move disk from A to C"`. Use string literals like `"A"`, `"B"`, `"C"` for the pegs.
 
-2. `hanoi_count(n: u32) -> u32` - returns the number of moves needed
-   (which is 2ⁿ − 1). Implement it recursively or with a formula.
+2. `hanoi_count(n: u32) -> u32` - returns the number of moves needed (which is 2ⁿ − 1). Implement it recursively or with a formula.
 
 ## Expected Result
 

@@ -1,8 +1,6 @@
 # Euclid's Algorithm
 
-The greatest common divisor (GCD) of two numbers is the largest number
-that divides both evenly. Euclid's algorithm is an elegant recursive
-solution:
+The greatest common divisor (GCD) of two numbers is the largest number that divides both evenly. Euclid's algorithm is an elegant recursive solution:
 
 ```
 gcd(a, b) = gcd(b, a % b)  - keep replacing (a, b) with (b, a mod b)

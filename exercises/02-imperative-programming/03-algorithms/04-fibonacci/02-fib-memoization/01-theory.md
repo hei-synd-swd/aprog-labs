@@ -1,10 +1,8 @@
 # Memoization
 
-Memoization stores the results of expensive function calls so they can
-be reused instead of recomputed.
+Memoization stores the results of expensive function calls so they can be reused instead of recomputed.
 
-For Fibonacci, the naive recursion recomputes F(2) many times.
-With memoization, each value is computed once and then cached.
+For Fibonacci, the naive recursion recomputes F(2) many times. With memoization, each value is computed once and then cached.
 
 ```rust
 let mut memo: Vec<Option<u64>> = vec![None; size];

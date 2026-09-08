@@ -1,8 +1,6 @@
 # Offset-based Neighbor Iteration
 
-Many grid algorithms need to inspect the cells adjacent to a given position.
-A clean way to do this is to define the **relative offsets** of the neighbors,
-then loop over them and **add bounds checks**.
+Many grid algorithms need to inspect the cells adjacent to a given position. A clean way to do this is to define the **relative offsets** of the neighbors, then loop over them and **add bounds checks**.
 
 ## The offset table
 
@@ -20,8 +18,7 @@ Each `(dr, dc)` pair is the row/col delta from the current cell.
 
 ## Applying offsets with bounds
 
-Convert to `isize` for the offset arithmetic, then verify the result is
-inside the grid before accessing it:
+Convert to `isize` for the offset arithmetic, then verify the result is inside the grid before accessing it:
 
 ```rust
 let rows = grid.len();
@@ -36,6 +33,4 @@ for (dr, dc) in offsets {
 }
 ```
 
-This pattern works for any grid-based algorithm - Conway's Game of Life,
-pathfinding, image filters, maze solving - without hard-coding each
-neighbor position.
+This pattern works for any grid-based algorithm - Conway's Game of Life, pathfinding, image filters, maze solving - without hard-coding each neighbor position.

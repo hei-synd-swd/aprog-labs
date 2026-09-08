@@ -14,8 +14,7 @@ The `Rectangle` struct is provided.
 1. **Define** a trait `Describe` with one method:
    - `fn describe(&self) -> String`
 
-2. **Implement** `Describe` for `Rectangle` so that `describe()` returns
-   a string like `"Rectangle: 5 x 8"`.
+2. **Implement** `Describe` for `Rectangle` so that `describe()` returns a string like `"Rectangle: 5 x 8"`.
 
 ## Expected Result
 

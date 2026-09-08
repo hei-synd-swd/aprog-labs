@@ -11,10 +11,8 @@ topics      = ["collection", "Vec", "trait object", "iteration", "Box"]
 
 The `Shape` trait, `Rectangle`, and `Circle` are provided.
 
-1. **Create** a `Vec<Box<dyn Shape>>` containing at least one `Rectangle`
-   and one `Circle`.
-2. Write a function **`total_area(shapes: &[Box<dyn Shape>]) -> f64`** that
-   sums the areas of all shapes in the slice.
+1. **Create** a `Vec<Box<dyn Shape>>` containing at least one `Rectangle` and one `Circle`.
+2. Write a function **`total_area(shapes: &[Box<dyn Shape>]) -> f64`** that sums the areas of all shapes in the slice.
 
 ## Expected Result
 

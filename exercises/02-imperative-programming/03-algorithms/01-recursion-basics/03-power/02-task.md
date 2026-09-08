@@ -9,8 +9,7 @@ topics      = ["recursion", "math"]
 
 # Power
 
-Write a recursive function `power(base: u64, exp: u32) -> u64` that
-returns `base` raised to `exp`.
+Write a recursive function `power(base: u64, exp: u32) -> u64` that returns `base` raised to `exp`.
 
 - Base case: `power(base, 0) = 1`
 - Recursive case: `power(base, exp) = base × power(base, exp - 1)`

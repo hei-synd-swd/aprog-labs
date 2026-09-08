@@ -1,8 +1,6 @@
 # Custom Types and Derive Macros
 
-Types you define yourself (enums, structs) don't automatically know how to
-be printed, copied, or compared. The `#[derive]` attribute asks the compiler
-to generate those capabilities automatically:
+Types you define yourself (enums, structs) don't automatically know how to be printed, copied, or compared. The `#[derive]` attribute asks the compiler to generate those capabilities automatically:
 
 ```rust
 #[derive(Debug, Clone, Copy, PartialEq)]

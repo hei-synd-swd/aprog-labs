@@ -11,12 +11,9 @@ topics      = ["trait", "default", "method"]
 
 The `Describe` trait is provided, along with `Rectangle` and `Circle`.
 
-1. **Add** a method `fn introduction(&self) -> String` to the `Describe` trait
-   with a **default implementation** that returns `"I am a {describe()}"`
-   (i.e. it calls `self.describe()` inside the default).
+1. **Add** a method `fn introduction(&self) -> String` to the `Describe` trait with a **default implementation** that returns `"I am a {describe()}"` (i.e. it calls `self.describe()` inside the default).
 
-2. **Override** `introduction` for `Circle` to return `"I am a circle with
-   radius {radius}"` instead.
+2. **Override** `introduction` for `Circle` to return `"I am a circle with radius {radius}"` instead.
 
 `Rectangle` should use the default; `Circle` should override it.
 

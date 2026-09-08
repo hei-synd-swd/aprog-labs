@@ -1,7 +1,6 @@
 # Ownership and Move Semantics
 
-Each value in Rust has exactly one **owner**. When a variable is assigned
-to another or passed to a function, ownership is **moved**:
+Each value in Rust has exactly one **owner**. When a variable is assigned to another or passed to a function, ownership is **moved**:
 
 ```rust
 let a = String::from("hello");

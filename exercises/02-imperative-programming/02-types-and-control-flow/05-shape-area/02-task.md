@@ -15,8 +15,7 @@ Model geometric shapes as an enum with data and calculate their area.
    - `Circle { radius: f64 }`
    - `Rect { width: f64, height: f64 }`
    - `Triangle { base: f64, height: f64 }`
-2. Write a function `area(shape: &Shape) -> f64` using `match` and pattern
-   destructuring.
+2. Write a function `area(shape: &Shape) -> f64` using `match` and pattern destructuring.
 3. Use `std::f64::consts::PI` for the circle area.
 
 ## Expected Result

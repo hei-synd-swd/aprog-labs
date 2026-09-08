@@ -9,9 +9,7 @@ topics      = ["formatting", "padding", "loops"]
 
 # Tree Creator
 
-Write `build_tree(height: u32) -> String` that returns an ASCII Christmas
-tree. Each row `i` (0-indexed) has `2×i + 1` stars, **center-aligned** to a
-width of `2×height − 1`.
+Write `build_tree(height: u32) -> String` that returns an ASCII Christmas tree. Each row `i` (0-indexed) has `2×i + 1` stars, **center-aligned** to a width of `2×height − 1`.
 
 Expected Result:
 ```

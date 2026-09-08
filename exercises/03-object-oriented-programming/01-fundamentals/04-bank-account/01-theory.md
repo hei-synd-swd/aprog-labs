@@ -1,12 +1,10 @@
 # Putting It All Together
 
-Now that you know how to define a struct, add read-only methods (`&self`),
-and add mutable methods (`&mut self`), you can build more interesting types.
+Now that you know how to define a struct, add read-only methods (`&self`), and add mutable methods (`&mut self`), you can build more interesting types.
 
 ## Struct with Multiple Methods
 
-A struct can have many methods in the same `impl` block - mix read-only
-methods and mutable methods:
+A struct can have many methods in the same `impl` block - mix read-only methods and mutable methods:
 
 ```rust
 impl Rectangle {

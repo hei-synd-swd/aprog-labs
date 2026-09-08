@@ -9,8 +9,7 @@ topics      = ["recursion", "math"]
 
 # GCD
 
-Write a recursive function `gcd(a: u64, b: u64) -> u64` that returns the
-greatest common divisor using Euclid's algorithm.
+Write a recursive function `gcd(a: u64, b: u64) -> u64` that returns the greatest common divisor using Euclid's algorithm.
 
 Expected Result:
 ```

@@ -1,12 +1,10 @@
 # Methods on Structs
 
-Methods are functions attached to a struct via an `impl` block. They give your
-types *behaviour* - like methods on a class in OOP.
+Methods are functions attached to a struct via an `impl` block. They give your types *behaviour* - like methods on a class in OOP.
 
 ## The `&self` Parameter
 
-The first parameter of a method is always `self` (or `&self`, `&mut self`).
-It represents the instance the method is called on.
+The first parameter of a method is always `self` (or `&self`, `&mut self`). It represents the instance the method is called on.
 
 - **`&self`** - borrows the instance **immutably** (read-only). Most common.
 - **`&mut self`** - borrows **mutably** (can change fields).
@@ -33,8 +31,7 @@ let c = Counter { value: 42 };
 println!("{}", c.get()); // 42
 ```
 
-Rust automatically borrows the receiver - `c.get()` is the same as
-`(&c).get()`.
+Rust automatically borrows the receiver - `c.get()` is the same as `(&c).get()`.
 
 ## Multiple Methods
 

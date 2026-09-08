@@ -1,7 +1,6 @@
 # String Formatting
 
-`format!` builds a `String` using the same syntax as `println!`. A format
-specifier goes inside `{}` after a colon:
+`format!` builds a `String` using the same syntax as `println!`. A format specifier goes inside `{}` after a colon:
 
 ```
 {[argument]:[fill][align][sign][#][0][width][.precision][type]}

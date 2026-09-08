@@ -1,7 +1,6 @@
 # Getters & Setters
 
-When a struct has private fields, you often provide **getter** and **setter**
-methods to let callers read and write field values in a controlled way.
+When a struct has private fields, you often provide **getter** and **setter** methods to let callers read and write field values in a controlled way.
 
 ## Getter Pattern
 
@@ -21,8 +20,7 @@ impl Player {
 
 ## Setter Pattern
 
-A setter typically uses `set_` prefix and takes `&mut self`. This is where you
-**validate** the new value before applying it:
+A setter typically uses `set_` prefix and takes `&mut self`. This is where you **validate** the new value before applying it:
 
 ```rust
 impl Player {

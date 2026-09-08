@@ -9,8 +9,7 @@ topics      = ["formatting", "padding", "alignment"]
 
 # Terminal Progress Bar
 
-Write `progress_bar(current: u32, total: u32, width: u32) -> String` that
-returns a progress bar like `"[###.......]  30%"`.
+Write `progress_bar(current: u32, total: u32, width: u32) -> String` that returns a progress bar like `"[###.......]  30%"`.
 
 - `width` is the number of positions **inside** the brackets.
 - Filled positions: `current × width / total`

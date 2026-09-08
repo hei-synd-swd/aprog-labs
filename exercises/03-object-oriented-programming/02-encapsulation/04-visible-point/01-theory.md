@@ -2,8 +2,7 @@
 
 ## Multiple Constructors
 
-A type can have several **named constructors** - associated functions that
-return `Self`. This gives callers ergonomic ways to create instances:
+A type can have several **named constructors** - associated functions that return `Self`. This gives callers ergonomic ways to create instances:
 
 ```rust
 struct Color {

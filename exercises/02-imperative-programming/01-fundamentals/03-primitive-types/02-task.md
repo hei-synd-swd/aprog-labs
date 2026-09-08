@@ -11,12 +11,9 @@ topics      = ["primitive-types", "integer", "char", "bool"]
 
 Implement three small functions that each touch a different scalar type:
 
-1. `u8_max() -> u8` - return the largest value a `u8` can hold, using its
-   associated constant (no magic number).
-2. `is_vowel(c: char) -> bool` - return `true` if `c` is one of the lowercase
-   English vowels `a, e, i, o, u`.
-3. `logical_xor(a: bool, b: bool) -> bool` - return `true` when **exactly one**
-   of the arguments is `true` (exclusive OR).
+1. `u8_max() -> u8` - return the largest value a `u8` can hold, using its associated constant (no magic number).
+2. `is_vowel(c: char) -> bool` - return `true` if `c` is one of the lowercase English vowels `a, e, i, o, u`.
+3. `logical_xor(a: bool, b: bool) -> bool` - return `true` when **exactly one** of the arguments is `true` (exclusive OR).
 
 ## Expected Result
 

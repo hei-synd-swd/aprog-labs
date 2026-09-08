@@ -25,5 +25,4 @@ for n in [1, 2, 3] {
 // total == 6
 ```
 
-Start immutable; add `mut` only when you actually need to change the value.
-This makes intent explicit and lets the compiler catch accidental mutations.
+Start immutable; add `mut` only when you actually need to change the value. This makes intent explicit and lets the compiler catch accidental mutations.

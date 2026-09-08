@@ -13,10 +13,8 @@ The `Rectangle` struct and its methods (`area`, `perimeter`) are provided. Add a
 
 Implement:
 
-1. **`scale(&mut self, factor: u32)`** - multiplies both `width` and `height`
-   by `factor`.
-2. **`shrink(&mut self, factor: u32)`** - divides both `width` and `height`
-   by `factor`. (Integer division is fine - truncation is acceptable.)
+1. **`scale(&mut self, factor: u32)`** - multiplies both `width` and `height` by `factor`.
+2. **`shrink(&mut self, factor: u32)`** - divides both `width` and `height` by `factor`. (Integer division is fine - truncation is acceptable.)
 
 ## Expected Result
 

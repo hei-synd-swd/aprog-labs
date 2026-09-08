@@ -11,15 +11,13 @@ topics      = ["enum", "derive", "debug", "clone", "partialeq", "type-alias"]
 
 Practice using `#[derive]` on a custom enum and creating a type alias.
 
-1. Define an enum `Level` with variants `Low`, `Medium`, `High`.
-   Derive `Debug`, `Clone`, `Copy`, and `PartialEq`.
+1. Define an enum `Level` with variants `Low`, `Medium`, `High`. Derive `Debug`, `Clone`, `Copy`, and `PartialEq`.
 2. Define a type alias `type Priority = u8`.
 3. Write a function `level_priority(level: &Level) -> Priority` that maps:
    - `Low` → `1`
    - `Medium` → `2`
    - `High` → `3`
-4. Write a function `can_skip(level: &Level) -> bool` that returns `true`
-   only for `Low`.
+4. Write a function `can_skip(level: &Level) -> bool` that returns `true` only for `Low`.
 5. In `main()`, use `{:?}` to print a level value (this requires `Debug`).
 
 ## Expected Result

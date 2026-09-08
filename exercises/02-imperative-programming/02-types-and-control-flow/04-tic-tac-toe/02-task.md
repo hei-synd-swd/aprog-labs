@@ -11,15 +11,13 @@ topics      = ["enum", "array", "loop", "win-condition"]
 
 Implement the core win-checking logic for a tic-tac-toe game.
 
-1. Define an enum `Cell` with variants `Empty`, `X`, `O`. Derive `Copy`, `Clone`,
-   and `PartialEq`.
+1. Define an enum `Cell` with variants `Empty`, `X`, `O`. Derive `Copy`, `Clone`, and `PartialEq`.
 2. Define a type alias `Board = [[Cell; 3]; 3]`.
 3. Implement `winner(board: &Board) -> Option<Cell>` that returns:
    - `Some(Cell::X)` if X has three in a row, column, or diagonal.
    - `Some(Cell::O)` if O has three in a row, column, or diagonal.
    - `None` if there is no winner.
-4. Implement `is_full(board: &Board) -> bool` that returns `true` when
-   no cell is `Empty`.
+4. Implement `is_full(board: &Board) -> bool` that returns `true` when no cell is `Empty`.
 
 ## Expected Result
 

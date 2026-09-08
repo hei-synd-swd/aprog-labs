@@ -26,8 +26,7 @@ match dir {
 }
 ```
 
-The compiler checks that every variant is covered - unmatched variants
-cause a compilation error. This is called **exhaustiveness**.
+The compiler checks that every variant is covered - unmatched variants cause a compilation error. This is called **exhaustiveness**.
 
 ## matches!
 
@@ -37,5 +36,4 @@ The `matches!` macro checks if a value matches a pattern and returns a `bool`:
 matches!(dir, Direction::North)  // true if dir is North
 ```
 
-This is shorter than writing a full `match` when you only need a `true`/`false`
-answer.
+This is shorter than writing a full `match` when you only need a `true`/`false` answer.

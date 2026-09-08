@@ -11,8 +11,7 @@ topics      = ["slice", "iteration"]
 
 Write `reverse(arr: &mut [i32])` that reverses the slice **in place**.
 
-Swap the first and last elements, then the second and second-last, and
-so on. Use `arr.swap(i, j)` to swap two positions.
+Swap the first and last elements, then the second and second-last, and so on. Use `arr.swap(i, j)` to swap two positions.
 
 Expected Result:
 ```

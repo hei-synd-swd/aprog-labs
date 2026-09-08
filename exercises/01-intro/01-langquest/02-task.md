@@ -9,13 +9,9 @@ topics      = ["langquest", "hello-world", "functions", "tests"]
 
 # Getting Started with LangQuest
 
-Time to try the workflow for real. The program on the **Output** page does not
-pass its tests yet - two functions are broken. Fix them so **all four tests**
-turn green.
+Time to try the workflow for real. The program on the **Output** page does not pass its tests yet - two functions are broken. Fix them so **all four tests** turn green.
 
-Open the file in your editor with `e`, make your changes, and **save**.
-LangQuest re-runs the tests automatically; check the **Output** page for your
-score and the **Debug** page for compiler messages.
+Open the file in your editor with `e`, make your changes, and **save**. LangQuest re-runs the tests automatically; check the **Output** page for your score and the **Debug** page for compiler messages.
 
 ## Your Task
 
@@ -23,8 +19,7 @@ score and the **Debug** page for compiler messages.
 2. `greet(name)` must return a personal greeting of the form `"Hello, <name>!"`
    - for example `greet("Ada")` returns `"Hello, Ada!"`.
 
-Do **not** change anything below the `DO NOT EDIT BELOW THIS LINE` banner: that
-is where the unit tests live.
+Do **not** change anything below the `DO NOT EDIT BELOW THIS LINE` banner: that is where the unit tests live.
 
 ## Expected Result
 

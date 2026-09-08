@@ -9,11 +9,9 @@ topics      = ["loops", "math"]
 
 # Digit Sum
 
-Write `digit_sum(n: u64) -> u64` that returns the sum of the decimal
-digits of `n`.
+Write `digit_sum(n: u64) -> u64` that returns the sum of the decimal digits of `n`.
 
-Use `n % 10` to get the last digit, `n / 10` to remove it.
-`digit_sum(0)` should return `0`.
+Use `n % 10` to get the last digit, `n / 10` to remove it. `digit_sum(0)` should return `0`.
 
 Expected Result:
 ```

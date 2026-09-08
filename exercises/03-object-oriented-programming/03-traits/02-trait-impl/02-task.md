@@ -9,8 +9,7 @@ topics      = ["trait", "impl", "polymorphism"]
 
 # Implement a Trait
 
-The `Describe` trait is provided, along with two structs `Rectangle` and
-`Circle`.
+The `Describe` trait is provided, along with two structs `Rectangle` and `Circle`.
 
 Implement `Describe` for both types:
 
@@ -19,5 +18,4 @@ Implement `Describe` for both types:
 
 ## Expected Result
 
-Both `rect.describe()` and `circle.describe()` work and return the correct
-format.
+Both `rect.describe()` and `circle.describe()` work and return the correct format.
