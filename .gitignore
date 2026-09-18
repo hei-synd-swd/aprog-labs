@@ -15,6 +15,7 @@ target/
 # ---- LangQuest ----
 **/.lq.attest
 **/results.toml
+exercises/**/Cargo.lock
 
 
 # ---- OS ----
