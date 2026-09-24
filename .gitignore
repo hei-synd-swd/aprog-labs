@@ -16,6 +16,7 @@ target/
 **/.lq.attest
 **/results.toml
 exercises/**/Cargo.lock
+**/.rust-project.json
 
 
 # ---- OS ----
