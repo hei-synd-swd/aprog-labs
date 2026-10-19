@@ -3,6 +3,10 @@
 #
 
 set shell := ["bash", "-uc"]
+set windows-shell := ["powershell.exe", "-NoLogo", "-NoProfile", "-Command"]
+
+# grep -E equivalent on Windows (same regex syntax)
+grep := if os_family() == "windows" { "Select-String -CaseSensitive" } else { "grep -E" }
 part := "part1"
 
 # List all commands
@@ -19,7 +23,7 @@ default:
 
 # Run tests, showing only failures
 @test-quiet part=part:
-  cargo test --features="{{part}}" 2>&1 | grep -E "(test |FAILED|error|panic)"
+  cargo test --features="{{part}}" 2>&1 | {{grep}} "(test |FAILED|error|panic)"
 
 # Check that the project compiles
 @check:

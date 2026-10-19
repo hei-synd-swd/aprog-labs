@@ -5,12 +5,12 @@
 rust_edition := "2024"
 app_name := "hello-world"
 crate_name := "hello_world"
-open := if os() == "linux" { "xdg-open" } else if os() == "macos" { "open" } else { "start \"\" /max" }
+open := if os() == "linux" { "xdg-open" } else if os() == "macos" { "open" } else { "Start-Process" }
 project_directory := justfile_directory()
 
 # For windows shell to be supported (suppose code is multi-platforms ready)
 set shell := ["bash", "-uc"]
-set windows-shell := ["cmd.exe", "/c"]
+set windows-shell := ["powershell.exe", "-NoLogo", "-NoProfile", "-Command"]
 
 ##################################################
 # Default
@@ -26,20 +26,17 @@ default:
 
 # Print environment info (OS, arch, toolchains)
 info:
-    #!/usr/bin/env bash
-    set +e
-    echo "OS          : {{ os() }}"
-    echo "Arch        : {{ arch() }}"
-    echo "Project     : {{ project_directory }}"
-    echo "App         : {{ app_name }}"
-    echo ""
-    echo "--- Rust toolchain ---"
-    rustup show 2>/dev/null || echo "rustup not found"
-    echo ""
-    printf "  %-12s %s\n" "rustc" "$(rustc --version 2>/dev/null || echo 'NOT FOUND')"
-    printf "  %-12s %s\n" "cargo" "$(cargo --version 2>/dev/null    || echo 'NOT FOUND')"
-    printf "  %-12s %s\n" "rustfmt" "$(rustfmt --version 2>/dev/null || echo 'NOT FOUND')"
-    printf "  %-12s %s\n" "clippy"  "$(cargo clippy --version 2>/dev/null || echo 'NOT FOUND')"
+    @echo "OS          : {{ os() }}"
+    @echo "Arch        : {{ arch() }}"
+    @echo "Project     : {{ project_directory }}"
+    @echo "App         : {{ app_name }}"
+    @echo ""
+    @echo "--- Rust toolchain ---"
+    -@rustup show
+    -@rustc --version
+    -@cargo --version
+    -@rustfmt --version
+    -@cargo clippy --version
 
 ##################################################
 # Build & Run

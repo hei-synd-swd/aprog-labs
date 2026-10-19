@@ -82,3 +82,69 @@ set windows-shell := ["cmd.exe", "/c"]
 # wipe all progress and start fresh
 @ex-reset dir=exercises_dir:
   lq --repo {{dir}} --reset
+
+# generate rust-project.json so rust-analyzer (Zed) works on the single-file exercises
+[unix]
+@ide-setup:
+  sysroot="$(rustc --print sysroot)/lib/rustlib/src/rust/library"; \
+  [ -d "$sysroot" ] || rustup component add rust-src; \
+  { printf '{"sysroot_src":"%s","crates":[' "$sysroot"; \
+    find {{exercises_dir}} -name '*.rs' -not -path '*/solution/*' -not -path '*/src/*' | sort \
+    | awk 'BEGIN{s=""} {printf "%s{\"root_module\":\"%s\",\"edition\":\"2024\",\"deps\":[]}", s, $0; s=","}'; \
+    printf ']}\n'; } > rust-project.json
+  echo "rust-project.json written"
+
+# generate rust-project.json so rust-analyzer (Zed) works on the single-file exercises
+[windows]
+[script('powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File')]
+[extension('.ps1')]
+ide-setup:
+  $sysroot = (rustc --print sysroot).Trim() + "/lib/rustlib/src/rust/library"
+  if (-not (Test-Path $sysroot)) { rustup component add rust-src }
+  $root = "{{project_dir}}"
+  $crates = Get-ChildItem "$root/{{exercises_dir}}" -Recurse -Filter *.rs |
+    Where-Object { $_.FullName -notmatch '[\\/](solution|src)[\\/]' } |
+    Sort-Object FullName |
+    ForEach-Object {
+      @{
+        root_module = $_.FullName.Substring($root.Length + 1).Replace('\', '/')
+        edition     = "2024"
+        deps        = @()
+      }
+    }
+  @{ sysroot_src = $sysroot.Replace('\', '/'); crates = @($crates) } |
+    ConvertTo-Json -Depth 5 -Compress |
+    Set-Content "$root/rust-project.json" -Encoding ascii
+  Write-Host "rust-project.json written"
+
+# remove build artifacts and generated files (keeps LangQuest progress)
+[unix]
+@clean:
+  find . -type d -name target -not -path './.git/*' -prune -exec rm -rf {} +
+  find . \( -name .DS_Store -o -name '*.rs.bk' -o -name '*.pdb' -o -name '.rust-project.json' -o -name rust-project.json \) -not -path './.git/*' -delete
+  find {{exercises_dir}} -name Cargo.lock -delete
+  # lq's rustc output and temp dirs left behind by interrupted compiles
+  find {{exercises_dir}} \( -name '.lq_run*' -o -type d \( -name 'rmeta??????' -o -name 'rustc??????' \) \) -prune -exec rm -rf {} +
+  echo "cleaned (run 'just ide-setup' to restore rust-analyzer config)"
+
+# remove build artifacts and generated files (keeps LangQuest progress)
+[windows]
+[script('powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File')]
+[extension('.ps1')]
+clean:
+  Set-Location "{{project_dir}}"
+  Get-ChildItem -Recurse -Force -Directory -Filter target |
+    Where-Object { $_.FullName -notmatch '[\\/]\.git[\\/]' } |
+    Remove-Item -Recurse -Force
+  Get-ChildItem -Recurse -Force -File |
+    Where-Object {
+      $_.FullName -notmatch '[\\/]\.git[\\/]' -and
+      ($_.Name -in '.DS_Store', '.rust-project.json', 'rust-project.json' -or $_.Name -like '*.rs.bk' -or $_.Name -like '*.pdb')
+    } |
+    Remove-Item -Force
+  Get-ChildItem {{exercises_dir}} -Recurse -Filter Cargo.lock | Remove-Item -Force
+  # lq's rustc output and temp dirs left behind by interrupted compiles
+  @(Get-ChildItem {{exercises_dir}} -Recurse -Force) |
+    Where-Object { $_.Name -like '.lq_run*' -or ($_.PSIsContainer -and $_.Name -match '^(rmeta|rustc)[A-Za-z0-9]{6}$') } |
+    Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+  Write-Host "cleaned (run 'just ide-setup' to restore rust-analyzer config)"

@@ -17,6 +17,10 @@ target/
 **/results.toml
 exercises/**/Cargo.lock
 **/.rust-project.json
+# rustc output and temp dirs from lq compiles
+exercises/**/.lq_run*
+exercises/**/rmeta??????/
+exercises/**/rustc??????/
 
 
 # ---- OS ----

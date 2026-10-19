@@ -6,6 +6,24 @@
   "edit_predictions": {
     "disabled_globs": ["**/*.rs", "**/*.md"],
   },
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "linkedProjects": [
+          "rust-project.json",
+          "exercises/01-intro/03-cargo/Cargo.toml",
+          "labs/01-tool/02-hello-world/Cargo.toml",
+          "labs/02-oop/01-hvz-oop-p1-s/Cargo.toml",
+          "labs/02-oop/01-hvz-oop-p2-s/Cargo.toml",
+          "labs/02-oop/01-hvz/Cargo.toml",
+          "labs/03-conc/02-hvz-rayon-s/Cargo.toml",
+          "labs/03-conc/02-hvz-rayon/Cargo.toml",
+          "labs/03-conc/03-prime-tasks-s/Cargo.toml",
+          "labs/03-conc/03-prime-tasks/Cargo.toml",
+        ],
+      },
+    },
+  },
   "show_completion_documentation": true,
   "show_whitespaces": "boundary",
   "remove_trailing_whitespace_on_save": true,
