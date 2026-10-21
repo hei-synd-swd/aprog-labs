@@ -24,7 +24,7 @@ exercises_dir := "exercises"
 labs_dir      := "labs"
 
 set shell := ["bash", "-uc"]
-set windows-shell := ["cmd.exe", "/c"]
+set windows-shell := ["powershell.exe", "-NoLogo", "-NoProfile", "-Command"]
 
 ##################################################
 # COMMANDS
@@ -124,7 +124,7 @@ ide-setup:
   find . \( -name .DS_Store -o -name '*.rs.bk' -o -name '*.pdb' -o -name '.rust-project.json' -o -name rust-project.json \) -not -path './.git/*' -delete
   find {{exercises_dir}} -name Cargo.lock -delete
   # lq's rustc output and temp dirs left behind by interrupted compiles
-  find {{exercises_dir}} \( -name '.lq_run*' -o -type d \( -name 'rmeta??????' -o -name 'rustc??????' \) \) -prune -exec rm -rf {} +
+  find {{exercises_dir}} \( -name '.lq_*' -o -type d \( -name 'rmeta??????' -o -name 'rustc??????' \) \) -prune -exec rm -rf {} +
   echo "cleaned (run 'just ide-setup' to restore rust-analyzer config)"
 
 # remove build artifacts and generated files (keeps LangQuest progress)
@@ -145,6 +145,6 @@ clean:
   Get-ChildItem {{exercises_dir}} -Recurse -Filter Cargo.lock | Remove-Item -Force
   # lq's rustc output and temp dirs left behind by interrupted compiles
   @(Get-ChildItem {{exercises_dir}} -Recurse -Force) |
-    Where-Object { $_.Name -like '.lq_run*' -or ($_.PSIsContainer -and $_.Name -match '^(rmeta|rustc)[A-Za-z0-9]{6}$') } |
+    Where-Object { $_.Name -like '.lq_*' -or ($_.PSIsContainer -and $_.Name -match '^(rmeta|rustc)[A-Za-z0-9]{6}$') } |
     Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
   Write-Host "cleaned (run 'just ide-setup' to restore rust-analyzer config)"

@@ -11,7 +11,6 @@
       "initialization_options": {
         "linkedProjects": [
           "rust-project.json",
-          "exercises/01-intro/03-cargo/Cargo.toml",
           "labs/01-tool/02-hello-world/Cargo.toml",
           "labs/02-oop/01-hvz-oop-p1-s/Cargo.toml",
           "labs/02-oop/01-hvz-oop-p2-s/Cargo.toml",

@@ -14,6 +14,7 @@ target/
 
 # ---- LangQuest ----
 **/.lq.attest
+**/.lq_*
 **/results.toml
 exercises/**/Cargo.lock
 **/.rust-project.json
