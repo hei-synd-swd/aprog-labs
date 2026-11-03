@@ -15,6 +15,9 @@ pub mod human;
 pub mod zombie;
 
 /// The game world: owns all entities and runs the game loop.
+///
+/// Compiled out with `part2_first` so the rest of part 2 can be tested alone.
+#[cfg(not(feature = "part2_first"))]
 pub mod world;
 
 /// Shared utility functions.

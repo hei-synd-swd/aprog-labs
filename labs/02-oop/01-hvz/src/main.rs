@@ -17,6 +17,7 @@ use rand::Rng;
 
 use hvz::human::Human;
 use hvz::position::Position;
+#[cfg(not(feature = "part2_first"))]
 use hvz::world::World;
 use hvz::zombie::Zombie;
 
@@ -50,19 +51,22 @@ fn random_positions(
 }
 
 fn main() {
-  let mut rng = rand::thread_rng();
-  let mut occupied = HashSet::new();
+  #[cfg(not(feature = "part2_first"))]
+  {
+    let mut rng = rand::thread_rng();
+    let mut occupied = HashSet::new();
 
-  let human_positions = random_positions(HUMAN_COUNT, &mut occupied, &mut rng);
-  let zombie_positions = random_positions(ZOMBIE_COUNT, &mut occupied, &mut rng);
+    let human_positions = random_positions(HUMAN_COUNT, &mut occupied, &mut rng);
+    let zombie_positions = random_positions(ZOMBIE_COUNT, &mut occupied, &mut rng);
 
-  let mut world = World::new(WIDTH, HEIGHT);
-  for pos in human_positions {
-    world.add_human(Human::new(pos));
+    let mut world = World::new(WIDTH, HEIGHT);
+    for pos in human_positions {
+      world.add_human(Human::new(pos));
+    }
+    for pos in zombie_positions {
+      world.add_zombie(Zombie::new(pos));
+    }
+
+    world.run();
   }
-  for pos in zombie_positions {
-    world.add_zombie(Zombie::new(pos));
-  }
-
-  world.run();
 }

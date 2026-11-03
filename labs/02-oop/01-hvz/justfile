@@ -17,7 +17,7 @@ default:
 @run:
   cargo run
 
-# Run all tests with part selection [part1|part2] (single-threaded so output stays grouped by module)
+# Run all tests with part selection [part1|part2_first|part2] (single-threaded so output stays grouped by module)
 @test part=part:
   cargo test --features="{{part}}" -- --test-threads=1
 

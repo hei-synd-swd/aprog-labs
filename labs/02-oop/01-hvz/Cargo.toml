@@ -7,5 +7,9 @@ edition = "2021"
 rand = "0.8"
 
 [features]
+# part1:        part 1 tests (World included)
+# part2_first:  part 2, early stage: Human + Zombie, World compiled out (implies part2)
+# part2:        final version (World included)
 part1 = []
 part2 = []
+part2_first = ["part2"]
