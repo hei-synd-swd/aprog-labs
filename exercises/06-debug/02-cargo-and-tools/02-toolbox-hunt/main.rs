@@ -1,10 +1,6 @@
 // Robot dashboard utility.
 
-struct Robot {
-    name: String,
-    battery: u8,
-    is_admin: bool,
-}
+struct Robot { name: String, battery: u8, is_admin: bool }
 
 // One wheel revolution in metres, for a wheel of the given radius.
 fn wheel_circumference(radius: f64) -> f64 {
@@ -24,11 +20,9 @@ fn battery_low(robot: &Robot) -> bool {
     return robot.battery < 20;
 }
 
-fn battery_report(robots: &[Robot]) -> String {
-    let mut report = String::new();
-    for robot in robots {
-        report.push_str(&format!("{} @ {}%\n", robot.name, robot.battery));
-    }
+fn battery_report( robots:&[Robot] )->String {
+    let mut report=String::new();
+    for robot in robots { report.push_str(&format!("{} @ {}%\n", robot.name, robot.battery)); }
     report
 }
 

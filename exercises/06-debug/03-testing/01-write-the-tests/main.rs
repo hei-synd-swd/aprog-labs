@@ -69,4 +69,27 @@ mod tests {
         assert_eq!(celsius_to_fahrenheit(100), 212);
         assert_eq!(celsius_to_fahrenheit(-40), -40);
     }
+
+    #[test]
+    fn student_tests_are_written() {
+        // Everything above the "EXERCISE UNIT TESTS" banner is the student's part.
+        let source = include_str!("main.rs");
+        let student_part = source.split("EXERCISE UNIT TESTS").next().unwrap_or("");
+        let tests = student_part
+            .lines()
+            .filter(|line| line.trim() == "#[test]")
+            .count();
+        let panics = student_part
+            .lines()
+            .filter(|line| line.trim().starts_with("#[should_panic"))
+            .count();
+        assert!(
+            tests >= 6,
+            "write at least 6 #[test] functions in `student_tests`, found {tests}"
+        );
+        assert!(
+            panics >= 1,
+            "at least one test must use #[should_panic(expected = \"...\")]"
+        );
+    }
 }

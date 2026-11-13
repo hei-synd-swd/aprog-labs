@@ -1,4 +1,4 @@
-ouse std::sync::mpsc::{self, Receiver};
+use std::sync::mpsc::{self, Receiver};
 use std::thread;
 
 fn start_worker(n: u64) -> Receiver<u64> {

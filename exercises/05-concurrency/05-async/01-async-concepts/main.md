@@ -1,4 +1,4 @@
-ee# Questions: Async Concepts
+# Questions: Async Concepts
 
 Answer the questions below in your own words, in full sentences.
 

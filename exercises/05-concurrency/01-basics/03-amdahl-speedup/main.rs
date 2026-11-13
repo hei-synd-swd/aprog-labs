@@ -1,5 +1,6 @@
 fn speedup(parallel_fraction: f64, processors: u32) -> f64 {
     // TODO: return Amdahl's Law: 1 / ((1 - f) + f / p)
+    todo!()
 }
 
 fn main() {

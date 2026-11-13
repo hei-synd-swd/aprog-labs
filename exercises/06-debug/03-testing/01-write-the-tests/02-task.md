@@ -40,4 +40,6 @@ Add your tests to the `student_tests` module in `main.rs` (a commented example s
 
 All tests pass. That includes yours *and* the provided ones.
 
+A provided test checks that the `student_tests` module contains at least **6** `#[test]` functions and at least one test with `#[should_panic]`. The exercise does not pass before that.
+
 > Do not edit the three provided functions or anything below the `DO NOT EDIT BELOW THIS LINE` marker.

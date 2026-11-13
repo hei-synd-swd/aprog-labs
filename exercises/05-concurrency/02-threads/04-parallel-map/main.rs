@@ -1,4 +1,4 @@
-huse std::thread;
+use std::thread;
 
 // TODO: add the bounds that allow `T` and `R` to cross a thread boundary
 fn parallel_map<T, R>(items: Vec<T>, workers: usize, f: fn(T) -> R) -> Vec<R> {
