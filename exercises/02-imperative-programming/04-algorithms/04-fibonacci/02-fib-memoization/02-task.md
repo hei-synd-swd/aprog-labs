@@ -13,7 +13,8 @@ Write `fib_memo(n: u32) -> u64` that returns the nth Fibonacci number using **re
 
 Use a `Vec<Option<u64>>` to cache computed values. The memoization technique is covered in the theory file.
 
-Expected Result:
+## Expected Result
+
 ```
 fib_memo(0)  → 0
 fib_memo(1)  → 1

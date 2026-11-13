@@ -1,14 +1,22 @@
-// TODO: `count_chars(text: &str) -> usize`
-// fn count_chars(text: &str) -> usize { ... }
+// TODO: implement `count_chars`
+fn count_chars(text: &str) -> usize {
+    todo!()
+}
 
-// TODO: `first_word(text: &str) -> &str` (first whitespace-separated word)
-// fn first_word(text: &str) -> &str { ... }
+// TODO: implement `first_word` (first whitespace-separated word)
+fn first_word(text: &str) -> &str {
+    todo!()
+}
 
-// TODO: `add_exclamation(text: &mut String)`
-// fn add_exclamation(text: &mut String) { ... }
+// TODO: implement `add_exclamation`
+fn add_exclamation(text: &mut String) {
+    todo!()
+}
 
-// TODO: `clear(text: &mut String)`
-// fn clear(text: &mut String) { ... }
+// TODO: implement `clear`
+fn clear(text: &mut String) {
+    todo!()
+}
 
 fn main() {
     let mut s = String::from("hello world");

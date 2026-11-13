@@ -13,7 +13,8 @@ Write `reverse(arr: &mut [i32])` that reverses the slice **in place**.
 
 Swap the first and last elements, then the second and second-last, and so on. Use `arr.swap(i, j)` to swap two positions.
 
-Expected Result:
+## Expected Result
+
 ```
 let mut v = vec![1, 2, 3, 4];
 reverse(&mut v);

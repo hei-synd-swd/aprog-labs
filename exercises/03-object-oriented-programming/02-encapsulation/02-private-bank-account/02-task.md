@@ -11,7 +11,7 @@ topics      = ["encapsulation", "module", "private", "pub", "Result"]
 
 An `Account` struct is defined inside a `mod bank` block. Its fields are **private** - outside code can only interact through the public methods.
 
-The struct already has `new`, `deposit`, and `balance` methods.
+The struct already has `new`, `owner`, `deposit`, and `balance` methods.
 
 1. **Implement `withdraw(&mut self, amount: u64) -> Result<(), String>`**
    - subtract `amount` from balance if sufficient funds exist, otherwise return an error message.

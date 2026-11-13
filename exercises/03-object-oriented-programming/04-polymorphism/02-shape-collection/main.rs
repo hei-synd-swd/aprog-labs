@@ -37,7 +37,10 @@ impl Shape for Circle {
     }
 }
 
-// TODO: write fn total_area(shapes: &[Box<dyn Shape>]) -> f64
+// TODO: sum the areas of all shapes in the slice
+fn total_area(shapes: &[Box<dyn Shape>]) -> f64 {
+    todo!()
+}
 
 fn main() {
     // TODO: create a Vec<Box<dyn Shape>> with at least one Rectangle and one Circle

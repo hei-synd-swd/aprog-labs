@@ -16,7 +16,8 @@ Start with `a = 0` and `b = 1`, then loop `n` times updating both:
 
 No recursion, no extra vector.
 
-Expected Result:
+## Expected Result
+
 ```
 fib_iter(0)  → 0
 fib_iter(1)  → 1

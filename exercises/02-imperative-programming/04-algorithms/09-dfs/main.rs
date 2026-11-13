@@ -1,12 +1,16 @@
 use std::collections::{HashMap, HashSet};
 
-// TODO: `dfs(graph: &HashMap<u32, Vec<u32>>, node: u32, visited: &mut HashSet<u32>)`
+// TODO: implement `dfs`
 // Insert node into visited, then recursively visit unvisited neighbors.
-// fn dfs(...) { ... }
+fn dfs(graph: &HashMap<u32, Vec<u32>>, node: u32, visited: &mut HashSet<u32>) {
+    todo!()
+}
 
-// TODO: `reachable_nodes(graph: &HashMap<u32, Vec<u32>>, start: u32) -> Vec<u32>`
+// TODO: implement `reachable_nodes`
 // Create a HashSet, call dfs, convert to sorted Vec.
-// fn reachable_nodes(...) -> Vec<u32> { ... }
+fn reachable_nodes(graph: &HashMap<u32, Vec<u32>>, start: u32) -> Vec<u32> {
+    todo!()
+}
 
 fn main() {
     let graph = HashMap::from([

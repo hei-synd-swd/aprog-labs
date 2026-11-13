@@ -11,7 +11,8 @@ topics      = ["loops", "math"]
 
 Write `is_prime(n: u64) -> bool` that returns `true` if `n` is prime.
 
-Expected Result:
+## Expected Result
+
 ```
 is_prime(2)   → true
 is_prime(17)  → true

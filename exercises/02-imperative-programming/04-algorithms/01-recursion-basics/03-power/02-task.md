@@ -14,7 +14,8 @@ Write a recursive function `power(base: u64, exp: u32) -> u64` that returns `bas
 - Base case: `power(base, 0) = 1`
 - Recursive case: `power(base, exp) = base × power(base, exp - 1)`
 
-Expected Result:
+## Expected Result
+
 ```
 power(2, 10) → 1024
 power(5, 3)  → 125

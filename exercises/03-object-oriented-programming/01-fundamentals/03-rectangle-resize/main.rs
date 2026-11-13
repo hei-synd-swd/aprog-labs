@@ -11,11 +11,17 @@ impl Rectangle {
     fn perimeter(&self) -> u32 {
         2 * (self.width + self.height)
     }
-}
 
-// TODO: add mutable methods:
-//   - fn scale(&mut self, factor: u32)   - multiply width and height by factor
-//   - fn shrink(&mut self, factor: u32)  - divide width and height by factor
+    // TODO: multiply width and height by `factor`
+    fn scale(&mut self, factor: u32) {
+        todo!()
+    }
+
+    // TODO: divide width and height by `factor`
+    fn shrink(&mut self, factor: u32) {
+        todo!()
+    }
+}
 
 fn main() {
     let mut rect = Rectangle {

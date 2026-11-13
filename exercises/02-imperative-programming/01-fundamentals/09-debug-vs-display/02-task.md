@@ -15,7 +15,8 @@ A `Person` struct is provided. Do the following:
 2. Implement `fmt::Display` so `{}` prints as `"Name (Age)"`.
 3. Write `format_debug` and `format_display`.
 
-Expected Result:
+## Expected Result
+
 ```
 format_debug(&p)   → contains "Person { name: \"Alice\", age: ... }"
 format_display(&p) → "Alice (30)"

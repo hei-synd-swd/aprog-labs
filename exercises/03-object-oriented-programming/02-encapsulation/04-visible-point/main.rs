@@ -1,7 +1,3 @@
-// TODO: implement distance(&self, other: &Point) -> f64
-// TODO: add a named constructor origin() -> Self
-// TODO: add a method translate(&mut self, dx: f64, dy: f64)
-
 use std::f64;
 
 /// A 2D point with private coordinates.
@@ -15,7 +11,10 @@ impl Point {
         Self { x, y }
     }
 
-    // TODO: add pub fn origin() -> Self that returns Point at (0.0, 0.0)
+    // TODO: return a `Point` at (0.0, 0.0)
+    pub fn origin() -> Self {
+        todo!()
+    }
 
     // Getters - Rust idiom, no get_ prefix
     pub fn x(&self) -> f64 {
@@ -26,11 +25,16 @@ impl Point {
         self.y
     }
 
-    // TODO: add pub fn distance(&self, other: &Point) -> f64
+    // TODO: return the distance to `other`
     // Formula: sqrt((x2 - x1)² + (y2 - y1)²)
+    pub fn distance(&self, other: &Point) -> f64 {
+        todo!()
+    }
 
-    // TODO: add pub fn translate(&mut self, dx: f64, dy: f64)
-    // Adds dx to x, dy to y
+    // TODO: add `dx` to x and `dy` to y
+    pub fn translate(&mut self, dx: f64, dy: f64) {
+        todo!()
+    }
 }
 
 fn main() {

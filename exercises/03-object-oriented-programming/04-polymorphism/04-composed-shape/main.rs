@@ -64,20 +64,33 @@ impl Drawing {
         }
     }
 
-    // TODO: add pub fn add_shape(&mut self, shape: Box<dyn Shape>)
-    //   Pushes shape into self.shapes
+    // TODO: push `shape` into `self.shapes`
+    pub fn add_shape(&mut self, shape: Box<dyn Shape>) {
+        todo!()
+    }
 
-    // TODO: add pub fn total_area(&self) -> f64
-    //   Sum of all shape areas
+    // TODO: return the sum of all shape areas
+    pub fn total_area(&self) -> f64 {
+        todo!()
+    }
 
-    // TODO: add pub fn describe(&self) -> String
-    //   Format: "Drawing '{label}' has {n} shapes, total area: {total:.2}"
+    // TODO: return the names of all shapes, separated by ", "
+    //   e.g. "circle, rectangle"
+    pub fn shape_names(&self) -> String {
+        todo!()
+    }
+
+    // TODO: return "Drawing '{label}' has {n} shapes, total area: {total:.2}"
+    pub fn describe(&self) -> String {
+        todo!()
+    }
 }
 
 fn main() {
     let mut drawing = Drawing::new("My Art");
     drawing.add_shape(Box::new(Circle::new(2.0)));
     drawing.add_shape(Box::new(Rectangle::new(3, 4)));
+    println!("{}", drawing.shape_names());
     println!("{}", drawing.describe());
 }
 
@@ -119,5 +132,14 @@ mod tests {
         let desc = d.describe();
         assert!(desc.contains("test"));
         assert!(desc.contains("1 shapes"));
+    }
+
+    #[test]
+    fn test_shape_names() {
+        let mut d = Drawing::new("Names");
+        assert_eq!(d.shape_names(), "");
+        d.add_shape(Box::new(Circle::new(1.0)));
+        d.add_shape(Box::new(Rectangle::new(2, 3)));
+        assert_eq!(d.shape_names(), "circle, rectangle");
     }
 }

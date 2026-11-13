@@ -5,7 +5,7 @@ fn is_magic(grid: &[Vec<u32>]) -> bool {
     let mut seen = [false; 10];
     for row in grid {
         for &n in row {
-            if n < 1 || n > 9 || seen[n as usize] {
+            if !(1..=9).contains(&n) || seen[n as usize] {
                 return false;
             }
             seen[n as usize] = true;
@@ -32,10 +32,14 @@ fn is_magic(grid: &[Vec<u32>]) -> bool {
 }
 
 // TODO: recursive helper
-// fn solve(grid: &mut Vec<Vec<u32>>, used: &mut [bool; 10], pos: usize, count: &mut u32) { ... }
+fn solve(grid: &mut Vec<Vec<u32>>, used: &mut [bool; 10], pos: usize, count: &mut u32) {
+    todo!()
+}
 
-// TODO: count_magic_squares() -> u32
-// fn count_magic_squares() -> u32 { ... }
+// TODO: implement `count_magic_squares`
+fn count_magic_squares() -> u32 {
+    todo!()
+}
 
 fn main() {
     println!("{}", count_magic_squares());

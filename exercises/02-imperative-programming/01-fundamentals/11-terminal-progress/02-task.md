@@ -16,7 +16,8 @@ Write `progress_bar(current: u32, total: u32, width: u32) -> String` that return
 - Empty positions: `width − filled`
 - Percentage: `current × 100 / total`, right-aligned to 3 characters.
 
-Expected Result:
+## Expected Result
+
 ```
 progress_bar(3, 10, 10) → "[###.......]  30%"
 progress_bar(0, 10, 10) → "[..........]   0%"

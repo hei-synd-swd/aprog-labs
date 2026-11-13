@@ -1,10 +1,14 @@
-// TODO: `encode(input: &str) -> String`
+// TODO: implement `encode`
 // compress runs of the same character into count + character
-// fn encode(input: &str) -> String { ... }
+fn encode(input: &str) -> String {
+    todo!()
+}
 
-// TODO: `decode(input: &str) -> String`
+// TODO: implement `decode`
 // expand count + character pairs back into the original string
-// fn decode(input: &str) -> String { ... }
+fn decode(input: &str) -> String {
+    todo!()
+}
 
 fn main() {
     let original = "aaabbc";

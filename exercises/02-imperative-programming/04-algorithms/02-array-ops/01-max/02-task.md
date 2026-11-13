@@ -11,7 +11,8 @@ topics      = ["slice", "iteration"]
 
 Write `max(arr: &[i32]) -> Option<i32>` that returns the largest value in the slice, or `None` if the slice is empty.
 
-Expected Result:
+## Expected Result
+
 ```
 max(&[])           → None
 max(&[5])          → Some(5)

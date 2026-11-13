@@ -27,7 +27,7 @@ fn main() {
         "{} {} {} {}",
         zero_pad(42),
         as_binary(5),
-        two_decimals(3.14159),
+        two_decimals(9.87654),
         as_hex(255)
     );
 }
@@ -52,7 +52,7 @@ mod tests {
 
     #[test]
     fn test_two_decimals() {
-        assert_eq!(two_decimals(3.14159), "3.14");
+        assert_eq!(two_decimals(9.87654), "9.88");
     }
 
     #[test]

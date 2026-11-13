@@ -18,7 +18,8 @@ Write two functions:
 
 2. `count_magic_squares() -> u32` - creates a 3×3 grid of zeros, a `[false; 10]` for used numbers, a counter at 0, calls `solve`, and returns the count.
 
-Expected Result:
+## Expected Result
+
 ```
 count_magic_squares() → 8
 ```

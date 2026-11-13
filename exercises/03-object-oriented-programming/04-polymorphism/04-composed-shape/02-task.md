@@ -15,10 +15,12 @@ A `Shape` trait, `Circle`, and `Rectangle` are provided, each with `area()` and 
 
 2. **Implement `total_area(&self) -> f64`** - return the sum of all shape areas.
 
-3. **Implement `describe(&self) -> String`** - return a formatted string: `"Drawing '{label}' has {n} shapes, total area: {total:.2}"`.
+3. **Implement `shape_names(&self) -> String`** - return the `name()` of every shape, separated by `", "`, e.g. `"circle, rectangle"`.
+4. **Implement `describe(&self) -> String`** - return a formatted string: `"Drawing '{label}' has {n} shapes, total area: {total:.2}"`.
 
 ## Expected Result
 
 - An empty drawing has a total area of 0.0.
 - After adding shapes, `total_area` returns the correct sum.
+- `shape_names` lists the shapes in the order they were added, and is empty for an empty drawing.
 - `describe` includes the label, shape count, and total area.

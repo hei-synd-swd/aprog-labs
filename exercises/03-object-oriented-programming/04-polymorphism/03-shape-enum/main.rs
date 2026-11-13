@@ -55,7 +55,7 @@ mod tests {
 
     #[test]
     fn test_shape_enum_in_vec() {
-        let shapes = vec![
+        let shapes = [
             ShapeEnum::Rectangle(Rectangle::new(3, 4)),
             ShapeEnum::Circle(Circle::new(1.0)),
         ];

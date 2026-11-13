@@ -1,6 +1,3 @@
-// TODO: Add a withdraw method to Account that checks for sufficient balance
-// TODO: Add a method is_active that returns true if balance > 0
-
 mod bank {
     pub struct Account {
         owner: String,
@@ -19,19 +16,30 @@ mod bank {
             self.balance += amount;
         }
 
+        pub fn owner(&self) -> &str {
+            &self.owner
+        }
+
         pub fn balance(&self) -> u64 {
             self.balance
         }
 
-        // TODO: implement withdraw(&mut self, amount: u64) -> Result<(), String>
-        // It should return Err if amount > balance, otherwise subtract and return Ok(())
+        // TODO: return Err if `amount` is larger than the balance,
+        // otherwise subtract it and return Ok(())
+        pub fn withdraw(&mut self, amount: u64) -> Result<(), String> {
+            todo!()
+        }
 
-        // TODO: implement is_active(&self) -> bool that returns true if balance > 0
+        // TODO: return true if the balance is greater than zero
+        pub fn is_active(&self) -> bool {
+            todo!()
+        }
     }
 }
 
 fn main() {
     let mut acc = bank::Account::new("Ada");
+    println!("Owner: {}", acc.owner());
     acc.deposit(100);
     println!("Balance: {}", acc.balance());
 
@@ -56,6 +64,12 @@ fn main() {
 #[cfg(test)]
 mod tests {
     use super::bank::Account;
+
+    #[test]
+    fn test_owner() {
+        let acc = Account::new("Ada");
+        assert_eq!(acc.owner(), "Ada");
+    }
 
     #[test]
     fn test_new_account_balance_zero() {

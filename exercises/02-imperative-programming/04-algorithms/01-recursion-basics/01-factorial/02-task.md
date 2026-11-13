@@ -14,7 +14,8 @@ Write a recursive function `factorial(n: u64) -> u64` that returns `n!` (the pro
 - Base case: `0! = 1`
 - Recursive case: `n! = n × (n - 1)!`
 
-Expected Result:
+## Expected Result
+
 ```
 factorial(0) → 1
 factorial(5) → 120

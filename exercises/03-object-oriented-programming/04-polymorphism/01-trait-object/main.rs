@@ -52,10 +52,8 @@ fn total_area(shapes: &[Box<dyn Shape>]) -> f64 {
 }
 
 fn main() {
-    let shapes: Vec<Box<dyn Shape>> = vec![
-        Box::new(Rectangle::new(10, 20)),
-        Box::new(Circle::new(5.0)),
-    ];
+    let shapes: Vec<Box<dyn Shape>> =
+        vec![Box::new(Rectangle::new(10, 20)), Box::new(Circle::new(5.0))];
 
     for shape in &shapes {
         println!("{}", describe(shape.as_ref()));
@@ -85,10 +83,8 @@ mod tests {
 
     #[test]
     fn test_total_area() {
-        let shapes: Vec<Box<dyn Shape>> = vec![
-            Box::new(Rectangle::new(5, 8)),
-            Box::new(Circle::new(1.0)),
-        ];
+        let shapes: Vec<Box<dyn Shape>> =
+            vec![Box::new(Rectangle::new(5, 8)), Box::new(Circle::new(1.0))];
         assert!((total_area(&shapes) - (40.0 + consts::PI)).abs() < 0.001);
     }
 

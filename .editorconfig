@@ -1,0 +1,11 @@
+# Indentation per folder, read by Zed and most other editors.
+root = true
+
+# Default: 2 spaces (labs with their rustfmt.toml, justfile, scripts, config).
+[*]
+indent_style = space
+indent_size = 2
+
+# Exercises are single files without a rustfmt.toml: rustfmt's default applies.
+[exercises/**.rs]
+indent_size = 4

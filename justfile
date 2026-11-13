@@ -84,17 +84,24 @@ set windows-shell := ["powershell.exe", "-NoLogo", "-NoProfile", "-Command"]
   lq --repo {{dir}} --reset
 
 # generate rust-project.json so rust-analyzer (Zed) works on the single-file exercises
+# (exercises whose Cargo.toml is a linkedProject in .zed/settings.json are left out:
+#  rust-analyzer loads those as Cargo projects, with their dependencies)
 [unix]
 @ide-setup:
   sysroot="$(rustc --print sysroot)/lib/rustlib/src/rust/library"; \
   [ -d "$sysroot" ] || rustup component add rust-src; \
   { printf '{"sysroot_src":"%s","crates":[' "$sysroot"; \
     find {{exercises_dir}} -name '*.rs' -not -path '*/solution/*' -not -path '*/src/*' | sort \
+    | while IFS= read -r file; do \
+        grep -qF "\"$(dirname "$file")/Cargo.toml\"" .zed/settings.json || printf '%s\n' "$file"; \
+      done \
     | awk 'BEGIN{s=""} {printf "%s{\"root_module\":\"%s\",\"edition\":\"2024\",\"deps\":[]}", s, $0; s=","}'; \
     printf ']}\n'; } > rust-project.json
   echo "rust-project.json written"
 
 # generate rust-project.json so rust-analyzer (Zed) works on the single-file exercises
+# (exercises whose Cargo.toml is a linkedProject in .zed/settings.json are left out:
+#  rust-analyzer loads those as Cargo projects, with their dependencies)
 [windows]
 [script('powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File')]
 [extension('.ps1')]
@@ -102,8 +109,10 @@ ide-setup:
   $sysroot = (rustc --print sysroot).Trim() + "/lib/rustlib/src/rust/library"
   if (-not (Test-Path $sysroot)) { rustup component add rust-src }
   $root = "{{project_dir}}"
+  $linked = Get-Content "$root/.zed/settings.json" -Raw
   $crates = Get-ChildItem "$root/{{exercises_dir}}" -Recurse -Filter *.rs |
     Where-Object { $_.FullName -notmatch '[\\/](solution|src)[\\/]' } |
+    Where-Object { -not $linked.Contains('"' + $_.DirectoryName.Substring($root.Length + 1).Replace('\', '/') + '/Cargo.toml"') } |
     Sort-Object FullName |
     ForEach-Object {
       @{

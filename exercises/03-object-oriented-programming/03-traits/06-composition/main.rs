@@ -1,6 +1,3 @@
-// TODO: add a method fuel_type(&self) -> &str to Engine
-// TODO: delegate fuel_type in Car to its engine
-
 struct Engine {
     horsepower: u32,
     fuel: String,
@@ -18,7 +15,10 @@ impl Engine {
         format!("{} hp engine is running", self.horsepower)
     }
 
-    // TODO: add fn fuel_type(&self) -> &str that returns &self.fuel
+    // TODO: return a reference to the `fuel` field
+    fn fuel_type(&self) -> &str {
+        todo!()
+    }
 }
 
 struct Car {
@@ -41,8 +41,11 @@ impl Car {
         format!("{}: {}", self.make, self.engine.start())
     }
 
-    // TODO: add fn fuel_type(&self) -> String that delegates to self.engine.fuel_type()
-    // Return format: "{} uses {}", self.make, fuel
+    // TODO: delegate to `self.engine.fuel_type()`
+    // Return format: "{make} uses {fuel}"
+    fn fuel_type(&self) -> String {
+        todo!()
+    }
 }
 
 fn main() {
@@ -51,6 +54,7 @@ fn main() {
 
     println!("{}", mustang.start());
     println!("{}", mustang.fuel_type());
+    println!("{} seats", mustang.seats);
 }
 
 //==============================================================================

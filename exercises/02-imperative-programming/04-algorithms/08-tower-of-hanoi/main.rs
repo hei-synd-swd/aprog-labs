@@ -1,9 +1,13 @@
-// TODO: `hanoi(n: u32, from: &str, to: &str, aux: &str)`
+// TODO: implement `hanoi`
 // prints each move like "Move disk from A to C"
-// fn hanoi(n: u32, from: &str, to: &str, aux: &str) { ... }
+fn hanoi(n: u32, from: &str, to: &str, aux: &str) {
+    todo!()
+}
 
-// TODO: `hanoi_count(n: u32) -> u32` - return number of moves (2ⁿ − 1)
-// fn hanoi_count(n: u32) -> u32 { ... }
+// TODO: implement `hanoi_count` - return number of moves (2ⁿ − 1)
+fn hanoi_count(n: u32) -> u32 {
+    todo!()
+}
 
 fn main() {
     println!("Moving 4 disks:");

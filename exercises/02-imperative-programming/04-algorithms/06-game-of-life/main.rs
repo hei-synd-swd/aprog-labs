@@ -1,7 +1,12 @@
-// fn count_neighbors(grid: &Vec<Vec<bool>>, row: usize, col: usize) -> u8 { ... }
+// TODO: implement `count_neighbors`
+fn count_neighbors(grid: &[Vec<bool>], row: usize, col: usize) -> u8 {
+    todo!()
+}
 
-// TODO: `next_generation(grid: &Vec<Vec<bool>>) -> Vec<Vec<bool>>`
-// fn next_generation(grid: &Vec<Vec<bool>>) -> Vec<Vec<bool>> { ... }
+// TODO: implement `next_generation`
+fn next_generation(grid: &[Vec<bool>]) -> Vec<Vec<bool>> {
+    todo!()
+}
 
 fn main() {
     // TODO: create a blinker pattern and print the next generation
@@ -40,15 +45,15 @@ mod tests {
         ];
         let next = next_generation(&blinker);
         // Vertical blinker becomes horizontal
-        assert_eq!(next[0][0], false);
-        assert_eq!(next[0][1], false);
-        assert_eq!(next[0][2], false);
-        assert_eq!(next[1][0], true);
-        assert_eq!(next[1][1], true);
-        assert_eq!(next[1][2], true);
-        assert_eq!(next[2][0], false);
-        assert_eq!(next[2][1], false);
-        assert_eq!(next[2][2], false);
+        assert!(!next[0][0]);
+        assert!(!next[0][1]);
+        assert!(!next[0][2]);
+        assert!(next[1][0]);
+        assert!(next[1][1]);
+        assert!(next[1][2]);
+        assert!(!next[2][0]);
+        assert!(!next[2][1]);
+        assert!(!next[2][2]);
     }
 
     #[test]

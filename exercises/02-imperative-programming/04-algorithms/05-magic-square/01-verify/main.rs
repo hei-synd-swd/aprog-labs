@@ -1,7 +1,9 @@
-// TODO: `is_magic(grid: &[Vec<u32>]) -> bool`
+// TODO: implement `is_magic`
 // Check: 3×3 grid, uses 1..=9 exactly once,
 //        every row, column, and diagonal sums to 15.
-// fn is_magic(grid: &[Vec<u32>]) -> bool { ... }
+fn is_magic(grid: &[Vec<u32>]) -> bool {
+    todo!()
+}
 
 fn main() {
     let valid = vec![vec![8, 1, 6], vec![3, 5, 7], vec![4, 9, 2]];
