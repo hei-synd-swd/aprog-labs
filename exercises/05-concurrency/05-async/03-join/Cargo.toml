@@ -1,0 +1,11 @@
+[package]
+name    = "join-futures"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "join-futures"
+path = "main.rs"
+
+[dependencies]
+tokio = { version = "1", features = ["full", "test-util"] }

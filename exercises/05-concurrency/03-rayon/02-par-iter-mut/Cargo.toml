@@ -1,0 +1,11 @@
+[package]
+name    = "par-iter-mut"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "par-iter-mut"
+path = "main.rs"
+
+[dependencies]
+rayon = "1.10"

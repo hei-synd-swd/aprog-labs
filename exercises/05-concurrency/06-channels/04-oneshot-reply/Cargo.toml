@@ -1,0 +1,11 @@
+[package]
+name    = "oneshot-reply"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "oneshot-reply"
+path = "main.rs"
+
+[dependencies]
+tokio = { version = "1", features = ["full", "test-util"] }

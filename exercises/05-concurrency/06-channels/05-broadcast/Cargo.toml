@@ -1,0 +1,11 @@
+[package]
+name    = "broadcast"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "broadcast"
+path = "main.rs"
+
+[dependencies]
+tokio = { version = "1", features = ["full", "test-util"] }
