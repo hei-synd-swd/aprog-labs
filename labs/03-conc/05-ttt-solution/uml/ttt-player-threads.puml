@@ -1,0 +1,78 @@
+@startuml
+skinparam shadowing false
+skinparam ArrowColor black
+skinparam nodesep 55
+skinparam ranksep 55
+skinparam defaultTextAlignment center
+skinparam component {
+  BackgroundColor #E8F4FD
+  BorderColor #2196F3
+  FontColor #1565C0
+}
+skinparam queue {
+  BackgroundColor #FFF8E1
+  BorderColor #F9A825
+}
+skinparam card {
+  BackgroundColor white
+  BorderColor #90A4AE
+  FontColor #455A64
+}
+
+title ttt player — four threads, two queues, one dispatcher\nmain.rs starts all four before anything happens; each one then loops forever, alone, until told to stop
+
+component "**stdin thread**\n""input.rs::spawn_stdin""\n----\nloop: read one line,\npublish it" as t_in <<thread>>
+
+component "**net reader thread**\n""net.rs::spawn_net_reader""\n----\nloop: read one line,\ndecode it, publish it" as t_netr <<thread>>
+
+queue "**events**\n""Channel<Event>""" as q_ev
+
+component "**main thread**\nthe ONE dispatcher\n----\nowns ""Controller""\n(which owns ""ConsoleDisplay"")\nthe only thread that ever\ntouches game / UI state" as t_main <<thread>>
+
+queue "**outgoing**\n""Channel<Request>""" as q_out
+
+component "**net writer thread**\n""net.rs::spawn_net_writer""\n----\nloop: take one request,\nencode it, send it" as t_netw <<thread>>
+
+t_main -up-> q_ev : publish\n""Event::Start""\nFIRST — before any\nworker thread exists
+t_in -down-> q_ev : publish\n""Event::FromStdin(text)""
+t_netr -down-> q_ev : publish\n""Event::FromServer(update)""\nor, once, ""Event::Closed""
+
+q_ev -down-> t_main : ""for event in incoming""\n(blocks until one arrives)
+
+t_main -down-> q_out : ""for request in controller.handle(event) { outgoing.publish(request) }""
+
+q_out -down-> t_netw : ""for request in requests""\n(blocks until one arrives)
+
+note right of q_ev
+  **""Event"" — everything the dispatcher can react to, tagged by what it is, not by who sent it**
+  ""Start""              ← main itself — published once, before any worker exists
+  ""FromStdin(String)""  ← stdin thread — one per line you type
+  ""FromServer(Update)"" ← net reader thread — one per message the server sent
+  ""Closed""             ← net reader thread — exactly once, when the socket ends
+
+  **""Update"" is ""ttt_core""'s own enum — the 4 things a server message can be:**
+  ""Seat(player)""    your seat — the reply to ""HELLO""
+  ""Board(cells)""    the 9-character board, redrawn
+  ""Refused(reason)"" your last move was declined
+  ""Bye""             the game — or the connection — is over
+
+  ""Event::FromServer"" is only the ENVELOPE. Reading one line of server
+  code — ""controller.rs""'s ""match update { ... }"" — always tells you
+  which of the 4 you actually got.
+end note
+
+note bottom of t_main
+  Even ""Request::Hello"" comes from ""controller.handle""
+  now: main asks ""what do we do at the start?"" the SAME
+  way it asks about anything else — ""Event::Start"" IS the
+  question, handled by the SAME match as every other event.
+end note
+
+note left of t_main
+  Renamed from ""Event::Update"" during this
+  review: the old name collided with
+  ""ttt_core::Update"" — same word, two
+  different types, one wrapping the other.
+end note
+
+@enduml

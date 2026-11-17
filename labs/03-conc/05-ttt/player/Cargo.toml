@@ -1,0 +1,15 @@
+[package]
+name = "ttt-player"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "player"
+path = "src/main.rs"
+
+[dependencies]
+ttt-core = { path = "../core" }
+minibus = { path = "../../04-minibus" }
+
+[lints]
+workspace = true

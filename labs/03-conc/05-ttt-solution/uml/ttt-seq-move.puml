@@ -1,0 +1,54 @@
+@startuml
+hide footbox
+skinparam shadowing false
+skinparam sequence {
+  ArrowColor black
+  LifeLineBorderColor #90A4AE
+  ParticipantBackgroundColor #E8F4FD
+  ParticipantBorderColor #2196F3
+  ParticipantFontColor #1565C0
+}
+skinparam queueBackgroundColor #FFF8E1
+skinparam queueBorderColor #F9A825
+skinparam noteBackgroundColor #FFF8E1
+skinparam noteBorderColor #F9A825
+
+title ttt player — the life of a move (one "5", end to end)
+
+box "player — ONE process (main + three worker threads)" #F4F8FB
+participant "input worker\n(stdin thread)" as inp
+queue "events\n(FIFO)" as ev
+participant "dispatcher\n+ controller" as ctl
+participant "display" as disp
+queue "outgoing\n(FIFO)" as outq
+participant "net writer\n(thread)" as nw
+participant "net reader\n(thread)" as nr
+end box
+
+participant "authority\n(the server —\nanother process)" as srv
+
+inp ->> ev : publish\nEvent::FromStdin("5")
+note over inp : fire and forget — the worker\nis already back on stdin
+
+ev ->> ctl : pop (for event in feed)
+note over ctl : the dispatcher BLOCKS on the FIFO\nbetween events — the controller is\nthe ONLY stateful consumer
+
+ctl -> ctl : decode "5" → Move(5)
+ctl ->> outq : publish\nRequest::Move(5)
+
+outq ->> nw : pop
+nw -> srv : MOVE 5
+note over nw, srv : crossing the box = crossing the NETWORK —\none line, one write over TCP;\nthe wire contract is PROTOCOL.md
+
+srv -> nr : STATE 1234X6789
+nr ->> ev : publish\nEvent::FromServer(Board)
+
+ev ->> ctl : pop
+ctl -> disp : on_update — render the board
+
+note over ev, disp
+  the reply rides the SAME path as the keystroke:
+  to the bus, every source is equal — adding one
+  (a GUI, a timer) changes no other component
+end note
+@enduml

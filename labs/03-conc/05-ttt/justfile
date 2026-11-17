@@ -1,0 +1,40 @@
+set windows-shell := ["wsl", "bash", "-lic"]
+
+import "demo.just"
+
+_default:
+    @just --list
+
+# build the two executables (server, player)
+build:
+    cargo build
+
+# unit tests: core rules, authority, controller (all synchronous)
+test:
+    cargo test
+
+# rustfmt + curated clippy, zero warnings
+lint:
+    cargo fmt --check
+    cargo clippy --all-targets -- -D warnings
+
+# end-to-end: scripted games, addressing, netcat probe, raw pipes
+e2e: build
+    sh e2e.sh
+
+# everything that must be green
+check: build test lint e2e
+
+# the authority: `just server 4747`
+server port="4747":
+    cargo run -q -p ttt-server -- {{port}}
+
+# a seat: `just player 127.0.0.1:4747`
+player addr="127.0.0.1:4747":
+    cargo run -q -p ttt-player -- {{addr}}
+
+# re-render the diagrams, PNG for the READMEs and SVG for the handouts
+# (needs plantuml and graphviz)
+diagrams:
+    plantuml -tpng -o . uml/*.puml
+    plantuml -tsvg -o . uml/*.puml
