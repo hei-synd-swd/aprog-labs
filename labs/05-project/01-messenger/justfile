@@ -1,4 +1,9 @@
-set windows-shell := ["wsl", "bash", "-lic"]
+# Windows: recipes run in PowerShell, no WSL needed. `'--'` is quoted below so
+# PowerShell passes it on to cargo instead of reading it itself.
+set windows-shell := ["powershell.exe", "-NoLogo", "-Command"]
+
+# the given programs: bin/<name> (Linux), bin/<name>-macos, bin/<name>.exe (Windows)
+ext := if os() == "macos" { "-macos" } else if os() == "windows" { ".exe" } else { "" }
 
 _default:
     @just --list
@@ -14,23 +19,23 @@ test:
 # rustfmt + curated clippy, zero warnings
 lint:
     cargo fmt --check
-    cargo clippy --all-targets -- -D warnings
+    cargo clippy --all-targets '--' -D warnings
 
 # everything that must be green
 check: build test lint
 
 # the reference server (given, no source): `just reference`
 reference port="5252":
-    ./bin/reference-server {{port}}
+    ./bin/reference-server{{ext}} {{port}}
 
 # your server: `just server`
 server port="5252":
-    cargo run -q -p messenger-server -- {{port}}
+    cargo run -q -p messenger-server '--' {{port}}
 
 # a member, in a window (given, no source): `just client`
 client addr="127.0.0.1:5252" nick="":
-    ./bin/client {{addr}} {{nick}}
+    ./bin/client{{ext}} {{addr}} {{nick}}
 
 # check a running server, rule by rule: `just tester`
 tester addr="127.0.0.1:5252":
-    ./bin/tester {{addr}}
+    ./bin/tester{{ext}} {{addr}}
