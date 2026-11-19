@@ -1,0 +1,3 @@
+# One knob: keep short struct literals on one line — the default (18)
+# breaks `Frame::Hello { nick: ... }` into three lines for nothing.
+struct_lit_width = 50

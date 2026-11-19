@@ -1,0 +1,27 @@
+[workspace]
+resolver = "3"
+members = ["core", "server"]
+
+# Curated pedantic clippy lints, shared by every member (each opts in with
+# `[lints] workspace = true`); the `just lint` gate escalates them to errors.
+# Deliberately NOT adopted (they fight the code's teaching intent):
+#   needless_pass_by_value — worker/runner signatures take ownership on
+#   purpose (for TcpListener/TcpStream, drop-on-return closes the socket).
+# Deliberately SILENCED (it pushes toward compact code, not readable code):
+#   question_mark — `let Some(x) = opt else { return None };` stays explicit
+#   on purpose; `opt?` reads faster but hides the early return in a symbol.
+#   collapsible_if — two nested `if`s, each with its own condition, stay
+#   apart; the merged `if let ... && ...` packs two decisions into one line.
+[workspace.lints.clippy]
+semicolon_if_nothing_returned = "warn"
+uninlined_format_args = "warn"
+cloned_instead_of_copied = "warn"
+inefficient_to_string = "warn"
+explicit_iter_loop = "warn"
+explicit_into_iter_loop = "warn"
+manual_let_else = "warn"
+redundant_else = "warn"
+map_unwrap_or = "warn"
+unnested_or_patterns = "warn"
+question_mark = "allow"
+collapsible_if = "allow"

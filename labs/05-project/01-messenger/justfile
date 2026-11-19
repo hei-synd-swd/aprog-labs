@@ -1,0 +1,36 @@
+set windows-shell := ["wsl", "bash", "-lic"]
+
+_default:
+    @just --list
+
+# build your server
+build:
+    cargo build
+
+# unit tests: the wire format (given) and yours
+test:
+    cargo test
+
+# rustfmt + curated clippy, zero warnings
+lint:
+    cargo fmt --check
+    cargo clippy --all-targets -- -D warnings
+
+# everything that must be green
+check: build test lint
+
+# the reference server (given, no source): `just reference`
+reference port="5252":
+    ./bin/reference-server {{port}}
+
+# your server: `just server`
+server port="5252":
+    cargo run -q -p messenger-server -- {{port}}
+
+# a member, in a window (given, no source): `just client`
+client addr="127.0.0.1:5252" nick="":
+    ./bin/client {{addr}} {{nick}}
+
+# check a running server, rule by rule: `just tester`
+tester addr="127.0.0.1:5252":
+    ./bin/tester {{addr}}

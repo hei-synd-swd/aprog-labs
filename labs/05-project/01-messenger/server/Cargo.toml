@@ -1,0 +1,16 @@
+[package]
+name = "messenger-server"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "server"
+path = "src/main.rs"
+
+[dependencies]
+messenger-core = { path = "../core" }
+# The minibus of the tic-tac-toe lab (its solution), if you want it:
+# minibus = { path = "../../../03-conc/04-minibus-s" }
+
+[lints]
+workspace = true

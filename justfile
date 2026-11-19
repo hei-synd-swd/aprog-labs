@@ -83,25 +83,35 @@ set windows-shell := ["powershell.exe", "-NoLogo", "-NoProfile", "-Command"]
 @ex-reset dir=exercises_dir:
   lq --repo {{dir}} --reset
 
-# generate rust-project.json so rust-analyzer (Zed) works on the single-file exercises
-# (exercises whose Cargo.toml is a linkedProject in .zed/settings.json are left out:
-#  rust-analyzer loads those as Cargo projects, with their dependencies)
+# set up rust-analyzer (Zed): write every project into the linkedProjects of .zed/settings.json
+#  - every valid Cargo.toml without a Cargo.toml in its parent dir (skips workspace
+#    members, solution/ copies and deliberately broken manifests)
+#  - every single-file exercise .rs (not in solution/ or src/, no linked Cargo.toml
+#    next to it); rust-analyzer loads these as standalone files with the std sysroot
 [unix]
 @ide-setup:
   sysroot="$(rustc --print sysroot)/lib/rustlib/src/rust/library"; \
   [ -d "$sysroot" ] || rustup component add rust-src; \
-  { printf '{"sysroot_src":"%s","crates":[' "$sysroot"; \
-    find {{exercises_dir}} -name '*.rs' -not -path '*/solution/*' -not -path '*/src/*' | sort \
-    | while IFS= read -r file; do \
-        grep -qF "\"$(dirname "$file")/Cargo.toml\"" .zed/settings.json || printf '%s\n' "$file"; \
-      done \
-    | awk 'BEGIN{s=""} {printf "%s{\"root_module\":\"%s\",\"edition\":\"2024\",\"deps\":[]}", s, $0; s=","}'; \
-    printf ']}\n'; } > rust-project.json
-  echo "rust-project.json written"
+  find {{exercises_dir}} {{labs_dir}} -name Cargo.toml -not -path '*/target/*' \
+    | while IFS= read -r toml; do \
+        [ -f "$(dirname "$(dirname "$toml")")/Cargo.toml" ] && continue; \
+        cargo metadata --no-deps --offline --format-version 1 --manifest-path "$toml" >/dev/null 2>&1 \
+          && printf '%s\n' "$toml"; \
+      done > .zed/tomls.tmp; \
+  { cat .zed/tomls.tmp; \
+    find {{exercises_dir}} -name '*.rs' -not -path '*/solution/*' -not -path '*/src/*' -not -path '*/target/*' \
+    | while IFS= read -r rs; do \
+        grep -qxF "$(dirname "$rs")/Cargo.toml" .zed/tomls.tmp || printf '%s\n' "$rs"; \
+      done; } | LC_ALL=C sort | sed 's/.*/          "&",/' > .zed/linked.tmp; \
+  awk 'FNR==NR { l = l $0 "\n"; next } \
+       /"linkedProjects": \[/ { print; printf "%s", l; skip = 1; next } \
+       skip && /^ *\],/ { skip = 0 } \
+       !skip' .zed/linked.tmp .zed/settings.json > .zed/settings.tmp \
+    && mv .zed/settings.tmp .zed/settings.json; \
+  rm -f .zed/tomls.tmp .zed/linked.tmp; \
+  echo ".zed/settings.json linkedProjects written"
 
-# generate rust-project.json so rust-analyzer (Zed) works on the single-file exercises
-# (exercises whose Cargo.toml is a linkedProject in .zed/settings.json are left out:
-#  rust-analyzer loads those as Cargo projects, with their dependencies)
+# set up rust-analyzer (Zed): same rules as the unix recipe above
 [windows]
 [script('powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File')]
 [extension('.ps1')]
@@ -109,22 +119,22 @@ ide-setup:
   $sysroot = (rustc --print sysroot).Trim() + "/lib/rustlib/src/rust/library"
   if (-not (Test-Path $sysroot)) { rustup component add rust-src }
   $root = "{{project_dir}}"
-  $linked = Get-Content "$root/.zed/settings.json" -Raw
-  $crates = Get-ChildItem "$root/{{exercises_dir}}" -Recurse -Filter *.rs |
-    Where-Object { $_.FullName -notmatch '[\\/](solution|src)[\\/]' } |
-    Where-Object { -not $linked.Contains('"' + $_.DirectoryName.Substring($root.Length + 1).Replace('\', '/') + '/Cargo.toml"') } |
-    Sort-Object FullName |
-    ForEach-Object {
-      @{
-        root_module = $_.FullName.Substring($root.Length + 1).Replace('\', '/')
-        edition     = "2024"
-        deps        = @()
-      }
-    }
-  @{ sysroot_src = $sysroot.Replace('\', '/'); crates = @($crates) } |
-    ConvertTo-Json -Depth 5 -Compress |
-    Set-Content "$root/rust-project.json" -Encoding ascii
-  Write-Host "rust-project.json written"
+  $tomls = @(Get-ChildItem "$root/{{exercises_dir}}", "$root/{{labs_dir}}" -Recurse -Filter Cargo.toml |
+    Where-Object { $_.FullName -notmatch '[\\/]target[\\/]' } |
+    Where-Object { -not (Test-Path (Join-Path $_.Directory.Parent.FullName 'Cargo.toml')) } |
+    Where-Object { cargo metadata --no-deps --offline --format-version 1 --manifest-path $_.FullName *> $null; $LASTEXITCODE -eq 0 } |
+    ForEach-Object { $_.FullName.Substring($root.Length + 1).Replace('\', '/') })
+  $files = @(Get-ChildItem "$root/{{exercises_dir}}" -Recurse -Filter *.rs |
+    Where-Object { $_.FullName -notmatch '[\\/](solution|src|target)[\\/]' } |
+    ForEach-Object { $_.FullName.Substring($root.Length + 1).Replace('\', '/') } |
+    Where-Object { $tomls -notcontains ($_.Substring(0, $_.LastIndexOf('/')) + '/Cargo.toml') })
+  [string[]]$linked = $tomls + $files
+  # ordinal sort = unix `LC_ALL=C sort`, so the generated file is identical on every OS
+  [Array]::Sort($linked, [StringComparer]::Ordinal)
+  $entries = ($linked | ForEach-Object { "          `"$_`"," }) -join "`n"
+  $settings = (Get-Content "$root/.zed/settings.json" -Raw) -replace '(?s)("linkedProjects": \[\r?\n).*?(\r?\n *\],)', "`${1}$entries`${2}"
+  [IO.File]::WriteAllText("$root/.zed/settings.json", $settings)
+  Write-Host ".zed/settings.json linkedProjects written"
 
 # remove build artifacts and generated files (keeps LangQuest progress)
 [unix]
@@ -134,7 +144,7 @@ ide-setup:
   find {{exercises_dir}} -name Cargo.lock -delete
   # lq's rustc output and temp dirs left behind by interrupted compiles
   find {{exercises_dir}} \( -name '.lq_*' -o -type d \( -name 'rmeta??????' -o -name 'rustc??????' \) \) -prune -exec rm -rf {} +
-  echo "cleaned (run 'just ide-setup' to restore rust-analyzer config)"
+  echo "cleaned"
 
 # remove build artifacts and generated files (keeps LangQuest progress)
 [windows]
@@ -156,4 +166,4 @@ clean:
   @(Get-ChildItem {{exercises_dir}} -Recurse -Force) |
     Where-Object { $_.Name -like '.lq_*' -or ($_.PSIsContainer -and $_.Name -match '^(rmeta|rustc)[A-Za-z0-9]{6}$') } |
     Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
-  Write-Host "cleaned (run 'just ide-setup' to restore rust-analyzer config)"
+  Write-Host "cleaned"
